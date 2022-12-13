@@ -3,6 +3,7 @@ package warcaby;
 public abstract class Piece {
     private boolean killed = false;
     private boolean white = false;
+    private boolean crowned = false;
 
     public Piece(boolean white) {
         this.white = white;
@@ -24,4 +25,13 @@ public abstract class Piece {
         this.killed = killed;
     }
 
+    public boolean isCrowned() {
+        return crowned;
+    }
+
+    public void setCrowned(boolean crowned) {
+        this.crowned = crowned;
+    }
+
+    public abstract int killablePieces();
 }
