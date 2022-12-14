@@ -1,9 +1,10 @@
 package warcaby;
 
-public class Man1 extends Piece {
+public class Piece1 extends Piece {
 
-    public Man1(boolean white) {
+    public Piece1(boolean white) {
         super(white);
+        this.setState(new Man1State());
     }
 
     @Override
