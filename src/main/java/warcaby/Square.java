@@ -4,12 +4,18 @@ public class Square {
     private Piece piece;
     private int x;
     private int y;
+    private boolean usable;
 
-    public Square(int x, int y, Piece piece)
+    public Square(int x, int y, Piece piece, boolean usable)
     {
         this.setPiece(piece);
         this.setX(x);
         this.setY(y);
+        this.usable=usable;
+    }
+
+    public boolean isUsable() {
+        return usable;
     }
 
     public Piece getPiece() {

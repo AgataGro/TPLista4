@@ -8,7 +8,7 @@ public class Piece1 extends Piece {
     }
 
     @Override
-    public int killablePieces() {
-        return 0;
+    public void setCurrentKillablePieces(int currentKillablePieces) {
+
     }
 }
