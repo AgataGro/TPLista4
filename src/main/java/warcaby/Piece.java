@@ -17,7 +17,6 @@ public abstract class Piece {
         this.white = white;
     }
 
-
     public State getState() {
         return state;
     }
@@ -33,4 +32,10 @@ public abstract class Piece {
     public int getCurrentKillablePieces() {
         return currentKillablePieces;
     }
+    public void doMove(Board board, String sequence){
+        this.state.Move(this, board, sequence);
+    }
+    public abstract String jump(Board board, Square start, Direction d);
+    public abstract String move(Board board, Square start, Direction d);
+    public abstract void crown(Square start);
 }

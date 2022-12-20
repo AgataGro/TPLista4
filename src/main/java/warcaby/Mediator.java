@@ -44,4 +44,11 @@ public class Mediator {
             }
         }
     }
+    public boolean doMove(Piece piece, String steps){
+        if(movablePieces.contains(piece)) {
+            piece.doMove(board, steps);
+            return true;
+        }
+        else return false;
+    }
 }

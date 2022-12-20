@@ -3,6 +3,12 @@ package warcaby;
 import java.util.List;
 
 public class Man1State implements State {
+    /**
+     * Funkcja wykonująca ruch, usuwa zbite pionki i przesuwa wybrany pionek
+     * @param piece
+     * @param board
+     * @param sequence
+     */
     @Override
     public void Move(Piece piece, Board board, String sequence) {
         String[] seq= sequence.split(":");
@@ -31,11 +37,7 @@ public class Man1State implements State {
      * Funkcja zliczająca ile maksymalnie pionków można zbić danym pionkiem w jedntm ruchu/turze
      * Pionek może bić do tyłu i do przodu po przekątnej
      * Pionek nie może przeskoczyć dwa razy nad tym samym pionkiem
-     * @param piece pionek, którego możliwości zbijania sprawdzamy
-     * @param board wykorzystywana w grze plansza
-     * @param start pole startowe, pole, na którym nasz pionek znajduje się na starcie rundy
-     * @param jumped lista pól nad, którymi przeskoczyliśmy
-     * @return maksymalna liczba pionków, które mozna zbić w jednej turze
+     * @see State
      */
     @Override
     public int killablePieces(Piece piece, Board board, Square start, List<Square> jumped) {
@@ -66,6 +68,14 @@ public class Man1State implements State {
         return Math.max(jumped.size(), Math.max(d1, Math.max(d2, Math.max(d3, d4))));
     }
 
+    /**
+     * @see State
+     * Zwraca true jak można wykonać ruch
+     * Czarne w kierunku DownLeft lub DownRight
+     * Białe w kierunku UpLeft lub UpRight
+     * Jak pole, na które przesuwamy pionek jest puste
+     * W przeciwnym wypadku false
+     */
     @Override
     public boolean move(Piece piece, Board board, Square start, Direction d) {
         Square temp;
@@ -98,6 +108,10 @@ public class Man1State implements State {
         else return false;
     }
 
+    /**
+     * @see State
+     * Pionek może bić zarówno do przodu jak i do tyłu
+     */
     @Override
     public boolean jump(Piece piece, Board board, Square start, Direction d) {
         Square temp;
@@ -132,5 +146,17 @@ public class Man1State implements State {
             else return false;
         }
         else return false;
+    }
+
+    /**
+     * @see State
+     * Pionek jest koronowany jeżeli na końcu/starcie tury znajduje się w rzędzie najbliżej gracza przeciwnego
+     */
+    @Override
+    public State crown(Piece piece, Square start) {
+        if((piece.isWhite()&&start.getY()==9)||(!piece.isWhite()&&start.getY()==0)){
+            return new King1State();
+        }
+        else return this;
     }
 }
