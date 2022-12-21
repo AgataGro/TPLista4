@@ -1,11 +1,21 @@
 package warcaby;
 
+/**
+ * Pole na planszy
+ */
 public class Square {
     private Piece piece;
     private int x;
     private int y;
-    private boolean usable;
+    private final boolean usable;
 
+    /**
+     * Konstruktor
+     * @param x współrzędna x pola
+     * @param y współrzędna y pola
+     * @param piece pionek znajdujący się na polu, null jak nie ma żadnego
+     * @param usable czy pole może być wykorzystane w danej grze
+     */
     public Square(int x, int y, Piece piece, boolean usable)
     {
         this.setPiece(piece);

@@ -3,6 +3,9 @@ package warcaby;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Wykorzystanie wzorca mediator do komunikacji między klasami Board i Piece
+ */
 public class Mediator {
     Board board;
     List<Piece> movablePieces=new ArrayList<>();
@@ -10,7 +13,11 @@ public class Mediator {
     public Mediator(Board board){
         this.board=board;
     }
-    // wyliczenie maksymalnej liczby pionkow, ktore gracz jest w stanie zbic w danej turze
+
+    /**
+     * wyliczenie maksymalnej liczby pionkow, ktore gracz jest w stanie zbic w danej turze
+     * @param isWhite czy ruch białych
+     */
     public void setMaxKillable(boolean isWhite) {
         int temp=0, num=board.getTileNum();
         Piece tile;
@@ -27,6 +34,10 @@ public class Mediator {
         this.maxKillable = temp;
     }
 
+    /**
+     * Funkcja ustalająca, które pionki w danej turze mogą wykonać ruch
+     * @param isWhite czy ruch białych
+     */
     public void setMovablePieces(boolean isWhite) {
         Piece[] temp;
         int num=board.getTileNum();
@@ -44,7 +55,15 @@ public class Mediator {
             }
         }
     }
+
+    /**
+     * Funkcja wykonująca ruch
+     * @param piece przesuwany pionek
+     * @param steps kolejne przesunięcia pionka
+     * @return true jeśli ruch był poprawny
+     */
     public boolean doMove(Piece piece, String steps){
+        //TO-DO sprawdzenie czy ruchy zbijają wszystkie niezbędne pionki
         if(movablePieces.contains(piece)) {
             piece.doMove(board, steps);
             return true;
