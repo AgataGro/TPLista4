@@ -1,87 +1,63 @@
-package warcaby;
 
-/**
- * Klasa abstrakcyjna pionka
- */
-public abstract class Piece {
-    private boolean white = false;
-    private State state;
-    private int currentKillablePieces;
+import javafx.scene.shape.Circle;
+import javafx.scene.paint.Color;
 
-    /**
-     * Konstruktor
-     * @param white czy kolor jest biały
-     */
-    public Piece(boolean white) {
-        this.white = white;
+public class Piece extends Circle {
+    private double mouseX, mouseY;
+    private int oldX, oldY;
+    // moveDirection jest potrzebne, żeby potem zablokować ruchy pionków do tyłu
+    private int moveDirection;
+
+    Piece(int x, int y, int r, Color color) {
+        super(x,y,r);
+        setFill(color);
+        oldX = x-35;
+        oldY = y-35;
+        if(color == Color.WHITE)
+            moveDirection = -1;
+        else
+            moveDirection = 1;
+        
+        setOnMousePressed(e -> {
+            mouseX = e.getX();
+            mouseY = e.getY();
+        });
+
+        setOnMouseDragged(e -> {
+            double xx = e.getSceneX()-mouseX;
+            double yy = e.getSceneY()-mouseY;
+            setCenterX(xx+getCenterX());
+            setCenterY(yy+getCenterY());
+            mouseX += xx;
+            mouseY += yy;
+        });
     }
 
-    /**
-     *
-     * @return zwraca czy kolor pionka jest biały
-     */
-    public boolean isWhite() {
-        return white;
+    public int getOldX() {
+        return oldX;
     }
 
-    /**
-     * @return zwraca stan pionka(Man/King)
-     */
-    public State getState() {
-        return state;
+    public int getOldY() {
+        return oldY;
     }
 
-    /**
-     * Funkcja ustawiająca stan pionka
-     * @param state stan pionka
-     */
-    public void setState(State state) {
-        this.state = state;
+    public int getMoveDirection() {
+        return moveDirection;
     }
 
-    /**
-     * Funkcja ustalająca maksymalną ilość pionków, które jesteśmy w stanie zbić danym pionkiem w jednej turze
-     * @param currentKillablePieces ilość pionków
-     */
-    public void setCurrentKillablePieces(int currentKillablePieces) {
-        this.currentKillablePieces = currentKillablePieces;
+    public Color getColor() {
+        return (Color) getFill();
     }
 
-    /**
-     * @return maksymalna ilość pionków, które jesteśmy w stanie zbić danym pionkiem w jednej turze
-     */
-    public int getCurrentKillablePieces() {
-        return currentKillablePieces;
+    public void move(int newX, int newY) {
+        oldX = newX*70;
+        oldY = newY*70;
+        setCenterX(oldX+35);
+        setCenterY(oldY+35);
     }
 
-    /**
-     * Funkcja wykonująca właściwy ruch, przesunięcie pionka i zbicie napotkanych po drodze pionków
-     * @param board wykorzystywana plansza
-     * @param sequence sekwencja kroków w stylu A0:C2:E4:C6
-     */
-    public void doMove(Board board, String sequence){
-        this.state.Move(this, board, sequence);
+    public void notMove() {
+        setCenterX(oldX+35);
+        setCenterY(oldY+35);
     }
-    /**
-     * Sprawdzenie czy zbicie jest możliwe
-     * @param board wykorzystywana plansza
-     * @param start pole, na którym aktualnie znajduje się pionek
-     * @param d kierunek ruchu
-     * @return String z nazwą pola np. A8
-     */
-    public abstract String jump(Board board, Square start, Direction d);
-    /**
-     * Sprawdzenie czy ruch jest możliwy
-     * @param board wykorzystywana plansza
-     * @param start pole, na którym aktualnie znajduje się pionek
-     * @param d kierunek ruchu
-     * @return String z nazwą pola np. A8
-     */
-    public abstract String move(Board board, Square start, Direction d);
-
-    /**
-     * Funkcja, która zmienia stan pionka z Man na King jeżeli spełnione są odpowiednie warunki
-     * @param start pole na którym aktualnie znajduje się pionek
-     */
-    public abstract void crown(Square start);
 }
