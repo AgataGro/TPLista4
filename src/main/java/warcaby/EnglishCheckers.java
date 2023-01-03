@@ -13,9 +13,12 @@ public class EnglishCheckers extends Application {
     private Group tilesGroup = new Group();
     private Group piecesGroup = new Group();
     private Square[][] tiles = new Square[8][8];
+    
+    Stage classStage = new Stage();
 
     @Override
     public void start(Stage stage) {
+        classStage = stage;
         AnchorPane pane = new AnchorPane();
         Button button = new Button("Opponent's turn");
         button.setFont(Font.font("Times New Roman", 20));
