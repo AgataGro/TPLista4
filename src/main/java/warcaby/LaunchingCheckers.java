@@ -66,7 +66,3 @@ public class LaunchingCheckers extends Application {
         Application.launch(args);
     }
 }
-
-//Thanks that works well. I also found another way of doing it. If you start one Application 
-//then you can load stages into it from anywhere in your code base as long as you add 
-//the stage on the Application thread. You can use Platform.runLater() for that.
