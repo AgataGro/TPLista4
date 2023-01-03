@@ -2,20 +2,29 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.Group;
+import javafx.scene.control.Button;
+import javafx.scene.text.Font;
+
 
 public class TurkishCheckers extends Application {
 
     Square[][] tiles = new Square[8][8];
     Group tilesGroup = new Group();
     Group piecesGroup = new Group();
+    
+    static Stage classStage = new Stage();
 
     @Override
     public void start(Stage stage) {
-        Pane pane = new Pane();
-        pane.getChildren().addAll(tilesGroup, piecesGroup);
+        classStage = stage;
+        AnchorPane pane = new AnchorPane();
+        Button button = new Button("Opponent's turn");
+        button.setFont(Font.font("Times New Roman", 20));
+        pane.getChildren().addAll(tilesGroup, piecesGroup, button);
+        AnchorPane.setBottomAnchor(button, 0.0);
 
         int x = 0, y = 0;
         for(int i = 0; i<8; i++) {
@@ -43,7 +52,7 @@ public class TurkishCheckers extends Application {
             y += 70;
         }
 
-        Scene scene = new Scene(pane,560,560);
+        Scene scene = new Scene(pane,560,596);
         stage.setTitle("Turkish checkers");
         stage.setScene(scene);
         stage.setResizable(false);
