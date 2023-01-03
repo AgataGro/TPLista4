@@ -2,24 +2,33 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.Group;
-
+import javafx.scene.control.Button;
+import javafx.scene.text.Font;
 
 public class PolishCheckers extends Application {
 
     private Group tilesGroup = new Group();
     private Group piecesGroup = new Group();
     private Square[][] tiles = new Square[10][10];
+    
+    // to pole jest wykorzystywane przy uruchamianiu aplikacji z poziomu klasy LaunchingCheckers
+    static Stage classStage = new Stage();
 
     /*
      * tutaj tworzy się plansza do gry
      */
     @Override
     public void start(Stage stage) {
-        Pane pane = new Pane();
-        pane.getChildren().addAll(tilesGroup, piecesGroup);
+        classStage = stage;
+
+        AnchorPane pane = new AnchorPane();
+        Button button = new Button("Opponent's turn");
+        button.setFont(Font.font("Times New Roman", 20));
+        pane.getChildren().addAll(tilesGroup, piecesGroup, button);
+        AnchorPane.setBottomAnchor(button, 0.0);
 
         int x = 0, y = 0;
         for(int i = 0; i<10; i++) {
@@ -59,7 +68,7 @@ public class PolishCheckers extends Application {
             y += 70;
         }
 
-        Scene scene = new Scene(pane,700,700);
+        Scene scene = new Scene(pane,700,736);
         stage.setTitle("Polish checkers");
         stage.setScene(scene);
         stage.setResizable(false);
