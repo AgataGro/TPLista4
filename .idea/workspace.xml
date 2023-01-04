@@ -5,14 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="507d3691-9c6d-4f7a-9346-3ab98a14bdcd" name="Changes" comment="Mediator między klasami Piece i Board, ruch zwykłych pionków, klasa Board">
-      <change afterPath="$PROJECT_DIR$/src/main/java/warcaby/King1State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/CheckersBoard2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/CheckersBoard2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Man1State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/Man1State.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Mediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/Mediator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/CheckersBoard1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/CheckersBoard2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/CheckersBoard3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/EnglishCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/EnglishCheckers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/King1State.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/LaunchingCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/LaunchingCheckers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Man1State.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Mediator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/MoveDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/MoveDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/MoveType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/MoveType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/Piece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Piece1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/Piece1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Piece1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/PolishCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/PolishCheckers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/Square.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/TurkishCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/TurkishCheckers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +46,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2IsO3V64Y1DURo5wJyjZhAydKAA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -45,12 +56,27 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;19&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Users/agata/IdeaProjects/TPLista4/src/main/java/warcaby&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/agata/IdeaProjects/Lista3/builder&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Agata/IdeaProjects/TPLista4&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -58,7 +84,12 @@
       <recent name="warcaby" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.WinClient">
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn archetype:generate \         -DarchetypeGroupId=org.openjfx \         -DarchetypeArtifactId=javafx-archetype-simple \         -DarchetypeVersion=0.0.3 \         -DgroupId=org.openjfx \         -DartifactId=sample \         -Dversion=1.0.0 \         -Djavafx-version=19" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.polish">
     <configuration name="WinClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="warcaby.WinClient" />
       <module name="TPLista4" />
@@ -85,6 +116,35 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <module name="TPLista4" />
+      <option name="PROGRAM_PARAMETERS" value="--module-path /path/to/JavaFX/lib --add-modules=javafx.controls" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="launch" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="warcaby.LaunchingCheckers" />
+      <module name="TPLista4" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\javafx-sdk-19\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="polish" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="warcaby.PolishCheckers" />
+      <module name="TPLista4" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\javafx-sdk-19\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.polish" />
+      <item itemvalue="Application.launch" />
+      <item itemvalue="Application.WinClient" />
+      <item itemvalue="Application.WinServerThread" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.WinClient" />
@@ -105,6 +165,13 @@
       <workItem from="1671044957228" duration="5137000" />
       <workItem from="1671293708153" duration="11610000" />
       <workItem from="1671571402821" duration="3110000" />
+      <workItem from="1671831794197" duration="23000" />
+      <workItem from="1672754426363" duration="3041000" />
+      <workItem from="1672759140412" duration="2434000" />
+      <workItem from="1672771901554" duration="48000" />
+      <workItem from="1672771985576" duration="1391000" />
+      <workItem from="1672784836262" duration="725000" />
+      <workItem from="1672866971032" duration="4931000" />
     </task>
     <task id="LOCAL-00001" summary="pom">
       <created>1670966715965</created>
@@ -173,5 +240,9 @@
     <MESSAGE value="Sprawdzanie czy pionek może się ruszyć, maksymalna liczba pionków do zbicia w jednej turze przez dany pionek" />
     <MESSAGE value="Mediator między klasami Piece i Board, ruch zwykłych pionków, klasa Board" />
     <option name="LAST_COMMIT_MESSAGE" value="Mediator między klasami Piece i Board, ruch zwykłych pionków, klasa Board" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

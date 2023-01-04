@@ -1,12 +1,15 @@
+package warcaby;
 
 import javafx.application.Application;
-import javafx.stage.Stage;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import javafx.scene.Group;
+import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.text.Font;
+
+import java.util.List;
 
 public class PolishCheckers extends Application {
 
@@ -171,6 +174,14 @@ public class PolishCheckers extends Application {
             int y0 = getScenePlace(piece.getOldY());
             tiles[x0][y0].setStroke(Color.GREEN);
             tiles[x0][y0].setStrokeWidth(5);
+            List<Square> availibleMoves = piece.getAvailibleMoves(tiles);
+            Square temp;
+            for(int i=0;i< availibleMoves.size();i++)
+            {
+                temp=availibleMoves.get(i);
+                temp.setStroke(Color.BLUE);
+                temp.setStrokeWidth(5);
+            }
         });
 
         /*
