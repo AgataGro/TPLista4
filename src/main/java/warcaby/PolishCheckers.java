@@ -44,7 +44,7 @@ public class PolishCheckers extends Application {
                 }
                 else {
                     if(i<4) {
-                        Piece piece = createPiece(x+35, y+35, 30, Color.BLACK);
+                        Piece piece = createPiece(x+35, y+35, 30, Color.BLACK, new PolishManState());
                         Square square = new Square(x,y,70,70,Color.BROWN);
                         square.setPiece(piece);
                         tiles[j][i] = square;
@@ -57,7 +57,7 @@ public class PolishCheckers extends Application {
                         tilesGroup.getChildren().add(square);
                     }
                     else if(i>5) {
-                        Piece piece = createPiece(x+35, y+35, 30, Color.WHITE);
+                        Piece piece = createPiece(x+35, y+35, 30, Color.WHITE, new PolishManState());
                         Square square = new Square(x,y,70,70,Color.BROWN);
                         square.setPiece(piece);
                         tiles[j][i] = square;
@@ -122,8 +122,8 @@ public class PolishCheckers extends Application {
      * @param color kolor wypełnienia koła
      * @return utworzony pionek
      */
-    private Piece createPiece(int x, int y, int r, Color color) {
-        Piece piece = new Piece(x,y,r,color);
+    private Piece createPiece(int x, int y, int r, Color color, State state) {
+        Piece piece = new Piece(x,y,r,color,state);
 
         /*
          * metoda aktywowana, kiedy puszczamy pionek

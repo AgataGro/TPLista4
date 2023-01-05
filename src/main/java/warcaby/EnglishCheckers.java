@@ -1,3 +1,4 @@
+package warcaby;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -14,7 +15,7 @@ public class EnglishCheckers extends Application {
     private Group piecesGroup = new Group();
     private Square[][] tiles = new Square[8][8];
     
-    Stage classStage = new Stage();
+    static Stage classStage = new Stage();
 
     @Override
     public void start(Stage stage) {
@@ -36,7 +37,7 @@ public class EnglishCheckers extends Application {
                 }
                 else {
                     if(i<3) {
-                        Piece piece = createPiece(x+35,y+35,30,Color.BLACK);
+                        Piece piece = createPiece(x+35,y+35,30,Color.BLACK, new EnglishManState());
                         Square square = new Square(x,y,70,70,Color.BROWN);
                         tiles[j][i] = square;
                         square.setPiece(piece);
@@ -49,7 +50,7 @@ public class EnglishCheckers extends Application {
                         tilesGroup.getChildren().add(square);
                     }
                     else if(i>4) {
-                        Piece piece = createPiece(x+35,y+35,30,Color.WHITE);
+                        Piece piece = createPiece(x+35,y+35,30,Color.WHITE, new EnglishManState());
                         Square square = new Square(x,y,70,70,Color.BROWN);
                         tiles[j][i] = square;
                         square.setPiece(piece);
@@ -94,8 +95,8 @@ public class EnglishCheckers extends Application {
         return new MoveDetails(MoveType.STAY, null);
     }
 
-    private Piece createPiece(int x, int y, int r, Color color) {
-        Piece piece = new Piece(x,y,r,color);
+    private Piece createPiece(int x, int y, int r, Color color, State state) {
+        Piece piece = new Piece(x,y,r,color,state);
 
         /*
          * metoda aktywowana, kiedy puszczamy pionek

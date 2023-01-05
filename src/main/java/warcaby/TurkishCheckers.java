@@ -1,3 +1,4 @@
+package warcaby;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -37,12 +38,12 @@ public class TurkishCheckers extends Application {
                 tiles[j][i] = square;
                 tilesGroup.getChildren().add(square);
                 if(i == 1 || i == 2) {
-                    Piece piece = createPiece(x+35,y+35,30,Color.BLACK);
+                    Piece piece = createPiece(x+35,y+35,30,Color.BLACK, new TurkishManState());
                     square.setPiece(piece);
                     piecesGroup.getChildren().add(piece);
                 }
                 else if(i == 5 || i == 6) {
-                    Piece piece = createPiece(x+35,y+35,30,Color.WHITE);
+                    Piece piece = createPiece(x+35,y+35,30,Color.WHITE, new TurkishManState());
                     square.setPiece(piece);
                     piecesGroup.getChildren().add(piece);
                 }
@@ -84,8 +85,8 @@ public class TurkishCheckers extends Application {
         return new MoveDetails(MoveType.STAY, null);
     }
 
-    private Piece createPiece(int x, int y, int r, Color color) {
-        Piece piece = new Piece(x,y,r,color);
+    private Piece createPiece(int x, int y, int r, Color color, State state) {
+        Piece piece = new Piece(x,y,r,color,state);
 
         /*
          * metoda aktywowana, kiedy puszczamy pionek

@@ -10,21 +10,20 @@ public class PolishManState implements State{
         int x = piece.getOldX()/70;
         int y = piece.getOldY()/70;
         int moveDirection = piece.getMoveDirection();
-        if(x>0 && y + moveDirection<=9&&y + moveDirection>=0) {
-            if (board[x - 1][y + moveDirection].hasPiece()) {
-                if(x>1&& y + 2*moveDirection<=9&&y + 2*moveDirection>=0) {
-                    if ((board[x - 1][y + moveDirection].getPiece().getColor() != piece.getColor() && !board[x - 2][y + 2 * moveDirection].hasPiece()))
-                        result.add(board[x - 2][y + 2 * moveDirection]);
+        for(int i=-1;i<=1;i=i+2)
+        {
+            for(int j=-1;j<=1;j=j+2){
+
+                if(x+i>=0 && x+i<=9 && y+j<=9 && y+j>=0) {
+                    if (board[x + i][y + j].hasPiece()) {
+                        if (x + 2 * i >= 0 && x + 2 * i <= 9 && y + 2 * j <= 9 && y + 2 * j >= 0) {
+                            if ((board[x + i][y + j].getPiece().getColor() != piece.getColor() && !board[x + 2 * i][y + 2 * j].hasPiece())) {
+                                result.add(board[x + 2 * i][y + 2 * j]);
+                            }
+                        }
+                    } else if(j==moveDirection)result.add(board[x + i][y + j]);
                 }
-            } else result.add(board[x - 1][y + moveDirection]);
-        }
-        if(x<9 && y + moveDirection<=9&&y + moveDirection>=0) {
-            if (board[x + 1][y + moveDirection].hasPiece()) {
-                if(x<8&& y + 2*moveDirection<=9&&y + 2*moveDirection>=0) {
-                    if ((board[x + 1][y + moveDirection].getPiece().getColor() != piece.getColor() && !board[x + 2][y + 2 * moveDirection].hasPiece()))
-                        result.add(board[x + 2][y + 2 * moveDirection]);
-                }
-            } else result.add(board[x + 1][y + moveDirection]);
+            }
         }
         return result;
     }

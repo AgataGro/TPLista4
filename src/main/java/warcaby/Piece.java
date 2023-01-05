@@ -1,14 +1,18 @@
+package warcaby;
 
 import javafx.scene.shape.Circle;
 import javafx.scene.paint.Color;
+
+import java.util.List;
 
 public class Piece extends Circle {
     private double mouseX, mouseY;
     private int oldX, oldY;
     // moveDirection jest potrzebne, żeby potem zablokować ruchy pionków do tyłu
     private int moveDirection;
+    private State state;
 
-    Piece(int x, int y, int r, Color color) {
+    Piece(int x, int y, int r, Color color, State state) {
         super(x,y,r);
         setFill(color);
         oldX = x-35;
@@ -17,7 +21,9 @@ public class Piece extends Circle {
             moveDirection = -1;
         else
             moveDirection = 1;
-        
+
+        this.state=state;
+
         setOnMousePressed(e -> {
             mouseX = e.getX();
             mouseY = e.getY();
@@ -59,5 +65,9 @@ public class Piece extends Circle {
     public void notMove() {
         setCenterX(oldX+35);
         setCenterY(oldY+35);
+    }
+
+    public List<Square> getAvailibleMoves(Square[][] board) {
+        return state.availibleMoves(this, board);
     }
 }

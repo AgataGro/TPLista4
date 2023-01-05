@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="507d3691-9c6d-4f7a-9346-3ab98a14bdcd" name="Changes" comment="Mediator między klasami Piece i Board, ruch zwykłych pionków, klasa Board">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="507d3691-9c6d-4f7a-9346-3ab98a14bdcd" name="Changes" comment="Podświetlanie pól na które można przesunąć pionek, tylko dla PolishCheckers, damka">
+      <change afterPath="$PROJECT_DIR$/src/main/java/warcaby/EnglishKingState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/warcaby/EnglishManState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/warcaby/TurkishKingState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/warcaby/TurkishManState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/CheckersBoard1.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/CheckersBoard2.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/CheckersBoard3.java" beforeDir="false" />
@@ -21,8 +23,8 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/Piece.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Piece1.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/PolishCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/PolishCheckers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/PolishManState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/PolishManState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/State.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/TurkishCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/TurkishCheckers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +91,7 @@
       <command value="mvn archetype:generate \         -DarchetypeGroupId=org.openjfx \         -DarchetypeArtifactId=javafx-archetype-simple \         -DarchetypeVersion=0.0.3 \         -DgroupId=org.openjfx \         -DartifactId=sample \         -Dversion=1.0.0 \         -Djavafx-version=19" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.polish">
+  <component name="RunManager" selected="Application.launch">
     <configuration name="WinClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="warcaby.WinClient" />
       <module name="TPLista4" />
@@ -171,7 +173,8 @@
       <workItem from="1672771901554" duration="48000" />
       <workItem from="1672771985576" duration="1391000" />
       <workItem from="1672784836262" duration="725000" />
-      <workItem from="1672866971032" duration="4931000" />
+      <workItem from="1672866971032" duration="5127000" />
+      <workItem from="1672933369447" duration="5287000" />
     </task>
     <task id="LOCAL-00001" summary="pom">
       <created>1670966715965</created>
@@ -215,7 +218,21 @@
       <option name="project" value="LOCAL" />
       <updated>1671313832575</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Podświetlanie pól na które można przesunąć pionek, tylko dla PolishCheckers, zwykły pionek">
+      <created>1672874512100</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1672874512100</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Podświetlanie pól na które można przesunąć pionek, tylko dla PolishCheckers, damka">
+      <created>1672940956461</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1672940956461</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,7 +256,9 @@
     <MESSAGE value="Modyfikacja klas Piece, Man1" />
     <MESSAGE value="Sprawdzanie czy pionek może się ruszyć, maksymalna liczba pionków do zbicia w jednej turze przez dany pionek" />
     <MESSAGE value="Mediator między klasami Piece i Board, ruch zwykłych pionków, klasa Board" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mediator między klasami Piece i Board, ruch zwykłych pionków, klasa Board" />
+    <MESSAGE value="Podświetlanie pól na które można przesunąć pionek, tylko dla PolishCheckers, zwykły pionek" />
+    <MESSAGE value="Podświetlanie pól na które można przesunąć pionek, tylko dla PolishCheckers, damka" />
+    <option name="LAST_COMMIT_MESSAGE" value="Podświetlanie pól na które można przesunąć pionek, tylko dla PolishCheckers, damka" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
