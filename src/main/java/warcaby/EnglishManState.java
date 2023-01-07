@@ -1,5 +1,7 @@
 package warcaby;
 
+import javafx.scene.paint.Color;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,5 +26,52 @@ public class EnglishManState implements State{
         }
 
         return result;
+    }
+
+    public List<List<Square>> moveSequence(Piece piece, Square[][] board, List<Square> steps, List<Square> jumped) {
+        List<Square> current;
+        List<List<Square>> result = new ArrayList<>(), endResult = new ArrayList<>();
+        current = availibleMoves(piece, board);
+        List<Square> list;
+
+        if(current.size()>0){
+            for (Square square : current) {
+                list = new ArrayList<>(steps);
+                int xdif = (int) (square.getX()/70-piece.getOldX()/70);
+                int ydif = (int) (square.getY()/70-piece.getOldY()/70);
+                if (Math.abs(xdif) > 1) {
+                    list.add(square);
+                    Piece p = new Piece((int) square.getX()+35,(int) square.getY()+35,30, piece.getColor(), new EnglishManState());
+                    List<Square> j = new ArrayList<>(jumped);
+                    xdif=xdif/2;
+                    ydif=ydif/2;
+                    if (!j.contains(board[piece.getOldX()/70 + xdif][piece.getOldY()/70 + ydif])) {
+                        j.add(board[piece.getOldX()/70 + xdif][piece.getOldY()/70 + ydif]);
+                        if((square.getY()/70==7&&piece.getColor()== Color.BLACK)||(square.getY()/70==0&&piece.getColor()== Color.WHITE)){
+                            result.add(list);
+                        }
+                        else result.addAll(moveSequence(p, board, list, j));
+                    }
+                } else {
+                    if (steps.isEmpty()) {
+                        list.add(square);
+                        result.add(list);
+                    }
+                    else result.add(list);
+                }
+            }
+        }
+        else result.add(steps);
+        for (List<Square> squares : result) {
+            if (!endResult.contains(squares)) {
+                endResult.add(squares);
+            }
+        }
+        return endResult;
+    }
+
+    @Override
+    public State changeState() {
+        return new EnglishKingState();
     }
 }

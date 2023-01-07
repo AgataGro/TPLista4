@@ -1,6 +1,5 @@
 package warcaby;
 
-import com.almasb.fxgl.scene.Scene;
 
 import java.util.List;
 
@@ -11,6 +10,13 @@ import java.util.List;
  * King - zachowanie damki
  */
 public interface State {
-
+    /**
+     * Funkcja sprawdzająca, na które pola można przesunąć pionek w zależności od jego stanu i układu pionków na planszy
+     * @param piece zaznaczony pionek
+     * @param board pola na wykorzystywanej planszy
+     * @return lista pól, na które można przesunąć pionek
+     */
     public List<Square> availibleMoves(Piece piece, Square[][] board);
+    public List<List<Square>> moveSequence(Piece piece, Square[][] board, List<Square> steps, List<Square> jumped);
+    public State changeState();
 }

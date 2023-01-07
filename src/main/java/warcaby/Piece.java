@@ -3,6 +3,7 @@ package warcaby;
 import javafx.scene.shape.Circle;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Piece extends Circle {
@@ -69,5 +70,9 @@ public class Piece extends Circle {
 
     public List<Square> getAvailibleMoves(Square[][] board) {
         return state.availibleMoves(this, board);
+    }
+    public List<List<Square>> moveSequences(Square[][] board){return  state.moveSequence(this, board, new ArrayList<>(), new ArrayList<>());}
+    public void changeState(){
+        state.changeState();
     }
 }
