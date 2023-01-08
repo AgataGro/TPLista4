@@ -27,7 +27,7 @@ public class TurkishManState implements State{
         if(y+moveDirection>=0 && y+moveDirection<=7) {
             if (board[x][y+moveDirection].hasPiece()) {
                 if (y + 2 * moveDirection >= 0 && y + 2 * moveDirection <= 7) {
-                    if ((board[x][y=moveDirection].getPiece().getColor() != piece.getColor() && !board[x][y + 2 * moveDirection].hasPiece())) {
+                    if ((board[x][y+moveDirection].getPiece().getColor() != piece.getColor() && !board[x][y + 2 * moveDirection].hasPiece())) {
                         result.add(board[x][y+2*moveDirection]);
                     }
                 }
@@ -48,22 +48,20 @@ public class TurkishManState implements State{
                 list = new ArrayList<>(steps);
                 int xdif = (int) (square.getX()/70-piece.getOldX()/70);
                 int ydif = (int) (square.getY()/70-piece.getOldY()/70);
-                if (Math.abs(xdif) > 1) {
+                if ((Math.abs(xdif) > 1&&ydif==0)||(Math.abs(ydif) > 1&&xdif==0)) {
                     list.add(square);
                     Piece p = new Piece((int) square.getX()+35,(int) square.getY()+35,30, piece.getColor(), new TurkishManState());
                     List<Square> j = new ArrayList<>(jumped);
                     xdif=xdif/2;
                     ydif=ydif/2;
-                    //sprawdzenie czy nie przeskakujemy nad ostanio zbitym pionkiem
-                    if (j.lastIndexOf(board[piece.getOldX()/70 + xdif][piece.getOldY()/70 + ydif])!=j.size()-1) {
-                        j.add(board[piece.getOldX()/70 + xdif][piece.getOldY()/70 + ydif]);
-                        board[piece.getOldX()/70 + xdif][piece.getOldY()/70 + ydif].setPiece(null);
-                        //zakończenie ruchu jeśli pionek przechodzi na wiersz najbliżej przeciwnika
-                        if((square.getY()/70==7&&piece.getColor()== Color.BLACK)||(square.getY()/70==0&&piece.getColor()== Color.WHITE)){
-                            result.add(list);
-                        }
-                        else result.addAll(moveSequence(p, board, list, j));
+                    j.add(board[piece.getOldX()/70 + xdif][piece.getOldY()/70 + ydif]);
+                    board[piece.getOldX()/70 + xdif][piece.getOldY()/70 + ydif].setPiece(null);
+                    //zakończenie ruchu jeśli pionek przechodzi na wiersz najbliżej przeciwnika
+                    if((square.getY()/70==7&&piece.getColor()== Color.BLACK)||(square.getY()/70==0&&piece.getColor()== Color.WHITE)){
+                        result.add(list);
                     }
+                    else result.addAll(moveSequence(p, board, list, j));
+
                 } else {
                     if (steps.isEmpty()) {
                         list.add(square);
@@ -79,6 +77,7 @@ public class TurkishManState implements State{
                 endResult.add(squares);
             }
         }
+
         result.clear();
         for (List<Square> squares : endResult) {
             if(result.isEmpty())result.add(squares);

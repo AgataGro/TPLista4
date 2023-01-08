@@ -1,3 +1,4 @@
+package warcaby;
 
 public class MoveDetails {
     private MoveType type;

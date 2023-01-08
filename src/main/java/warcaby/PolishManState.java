@@ -50,7 +50,6 @@ public class PolishManState implements State{
                     ydif=ydif/2;
                     if (!j.contains(board[piece.getOldX()/70 + xdif][piece.getOldY()/70 + ydif])) {
                         j.add(board[piece.getOldX()/70 + xdif][piece.getOldY()/70 + ydif]);
-                        System.out.println(list);
                         result.addAll(moveSequence(p, board, list, j));
                     }
                 } else {

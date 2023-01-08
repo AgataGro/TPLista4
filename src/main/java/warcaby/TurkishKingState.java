@@ -56,15 +56,15 @@ public class TurkishKingState implements State{
                 else x=1;
                 if(ydif<0)y=-1;
                 else y=1;
-                while(xdif!=0){
+                while(xdif!=0||ydif!=0){
                     if(board[(int) (square.getX()/70-x)][(int) (square.getY()/70-y)].hasPiece()){
                         if(board[(int) (square.getX()/70-x)][(int) (square.getY()/70-y)].getPiece().getColor()!=piece.getColor()){
                             killed=board[(int) (square.getX()/70-x)][(int) (square.getY()/70-y)];
                             break;
                         }
                     }
-                    xdif=xdif-x;
-                    ydif=ydif-y;
+                    if(xdif!=0)xdif=xdif-x;
+                    if(ydif!=0)ydif=ydif-y;
                     if(x<0)x--;
                     else x++;
                     if(y<0)y--;
