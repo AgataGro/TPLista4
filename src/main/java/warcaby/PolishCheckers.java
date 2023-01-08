@@ -94,24 +94,12 @@ public class PolishCheckers extends Application {
      * @param y współrzędna y lewego górnego rogu kwadratu, na którym upuściliśmy pionek
      * @return typ ruchu, który wykonaliśmy i pionek, który zbilliśmy albo null, jeżeli nie zbiliśmy żadnego
      */
-    private MoveDetails checkMove(Piece piece, int x, int y) {
-        if((x+y)%2==0 || tiles[x][y].hasPiece()) {
-            return new MoveDetails(MoveType.STAY, null);
-        }
-
-        int startX = getScenePlace(piece.getOldX());
-        int startY = getScenePlace(piece.getOldY());
-        if(Math.abs(x-startX)==1 && y-startY==piece.getMoveDirection()) {
-            return new MoveDetails(MoveType.STEP, null);
-        }
-        else if(Math.abs(x-startX)==2 && Math.abs(y-startY)==2) {
-            int middleX = startX + (x - startX)/2;
-            int middleY = startY + (y - startY)/2;
-            if(tiles[middleX][middleY].hasPiece() && tiles[middleX][middleY].getPiece().getColor()!=piece.getColor()) {
-                return new MoveDetails(MoveType.KILL, tiles[middleX][middleY].getPiece());
-            }
-        }
-        return new MoveDetails(MoveType.STAY, null);
+    private boolean checkMove(Piece piece, int x, int y) {
+        List<Square> availableMoves = piece.getAvailableMoves(tiles);
+        if(availableMoves.contains(tiles[x][y]))
+            return true;
+        else
+            return false;
     }
 
     /**
@@ -123,7 +111,7 @@ public class PolishCheckers extends Application {
      * @return utworzony pionek
      */
     private Piece createPiece(int x, int y, int r, Color color, State state) {
-        Piece piece = new Piece(x,y,r,color,state);
+        Piece piece = new PolishPiece(x,y,r,color,state);
 
         /*
          * metoda aktywowana, kiedy puszczamy pionek
@@ -134,35 +122,34 @@ public class PolishCheckers extends Application {
             int newX = getScenePlace(e.getSceneX());
             int newY = getScenePlace(e.getSceneY());
 
-            MoveDetails details;
-
-            if(newX<0 || newY<0 || newX>9 || newY>9)
-                details = new MoveDetails(MoveType.STAY, null);
+            if(newX<0 || newY<0 || newX>9 || newY>9 || !checkMove(piece,newX,newY))
+                piece.notMove();
             else {
-                details = checkMove(piece, newX, newY);
-            }
-
-            int startX = getScenePlace(piece.getOldX());
-            int startY = getScenePlace(piece.getOldY());
-
-            switch (details.getMoveType()) {
-                case STAY:
-                    piece.notMove();
-                    break;
-                case STEP:
-                    piece.move(newX,newY);
-                    tiles[startX][startY].setPiece(null);
-                    tiles[newX][newY].setPiece(piece);
-                    break;
-                case KILL:
-                    piece.move(newX,newY);
-                    tiles[startX][startY].setPiece(null);
-                    tiles[newX][newY].setPiece(piece);
-                    Piece killedPiece = details.getPiece();
-                    tiles[getScenePlace(killedPiece.getOldX())][getScenePlace(killedPiece.getOldY())].setPiece(null);
-                    piecesGroup.getChildren().remove(killedPiece);
-                    break;
-            }
+                int startX = getScenePlace(piece.getOldX());
+                    int startY = getScenePlace(piece.getOldY());
+                    if(checkMove(piece,newX,newY) && piece.getState() instanceof PolishManState) {
+                        if(Math.abs(newX-startX)==1) {
+                            piece.move(newX,newY);
+                            tiles[startX][startY].setPiece(null);
+                            tiles[newX][newY].setPiece(piece);
+                        }
+                        else {
+                            piece.move(newX,newY);
+                            tiles[startX][startY].setPiece(null);
+                            tiles[newX][newY].setPiece(piece);
+                            int middleX = startX + (newX - startX)/2;
+                            int middleY = startY + (newY - startY)/2;
+                            Piece killedPiece = tiles[middleX][middleY].getPiece();
+                            tiles[getScenePlace(killedPiece.getOldX())][getScenePlace(killedPiece.getOldY())].setPiece(null);
+                            piecesGroup.getChildren().remove(killedPiece);
+                        }
+                    }
+                    else if(checkMove(piece,newX,newY) && piece.getState() instanceof PolishKingState) {
+                        piece.move(newX,newY);
+                        tiles[startX][startY].setPiece(null);
+                        tiles[newX][newY].setPiece(piece);
+                    }
+                }
         });
 
         /*
@@ -170,10 +157,6 @@ public class PolishCheckers extends Application {
          * możliwe drogi zbicia
          */
         piece.setOnMouseClicked(e -> {
-            int x0 = getScenePlace(piece.getOldX());
-            int y0 = getScenePlace(piece.getOldY());
-            tiles[x0][y0].setStroke(Color.GREEN);
-            tiles[x0][y0].setStrokeWidth(5);
             List<Square> availibleMoves = piece.getAvailibleMoves(tiles);
             Square temp;
             for(int i=0;i< availibleMoves.size();i++)
@@ -189,9 +172,17 @@ public class PolishCheckers extends Application {
          * wcześniej się podświetliły na klliknięcie, mają wrócić do niepodświetlonego stanu
          */
         piece.setOnMouseExited(e -> {
-            int x0 = getScenePlace(piece.getOldX());
-            int y0 = getScenePlace(piece.getOldY());
-            tiles[x0][y0].setStroke((null));
+            List<Square> availibleMoves = piece.getAvailableMoves(tiles);
+            Square temp;
+            for(int i=0;i< availibleMoves.size();i++)
+            {
+                temp=availibleMoves.get(i);
+                temp.setStroke(null);
+            }
+        });
+        
+        piece.setOnMouseDragged(e -> {
+            piece.toFront();
         });
 
         return piece;
