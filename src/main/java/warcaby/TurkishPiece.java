@@ -2,9 +2,9 @@ package warcaby;
 
 import javafx.scene.paint.Color;
 
-public class EnglishPiece extends Piece {
+public class TurkishPiece extends Piece {
 
-    EnglishPiece(int x, int y, int r, Color color, State state) {
+    TurkishPiece(int x, int y, int r, Color color, State state) {
         super(x,y,r);
         setFill(color);
         oldX = x-35;
