@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="507d3691-9c6d-4f7a-9346-3ab98a14bdcd" name="Changes" comment="Sprawdzanie pojedyńczych ruchów dla każdego rodzaju pionka, tworzenie pionków z odpowiednim State">
-      <change afterPath="$PROJECT_DIR$/src/test/java/warcaby/PolishManStateTest.java" afterDir="false" />
+    <list default="true" id="507d3691-9c6d-4f7a-9346-3ab98a14bdcd" name="Changes" comment="Generowanie sekwencji ruchów">
+      <change afterPath="$PROJECT_DIR$/src/test/java/warcaby/EnglishManStateTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/warcaby/PolishKingStateTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/warcaby/TurkishManStateTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/CheckersBoard1.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/CheckersBoard2.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/CheckersBoard3.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/EnglishKingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/EnglishKingState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/EnglishManState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/EnglishManState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/King1State.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/LaunchingCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/LaunchingCheckers.java" afterDir="false" />
@@ -19,12 +19,9 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Mediator.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/MoveDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/MoveDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/MoveType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/MoveType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/Piece.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Piece1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/PolishKingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/PolishKingState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/PolishManState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/PolishManState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/State.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/TurkishKingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/TurkishKingState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/TurkishManState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/TurkishManState.java" afterDir="false" />
     </list>
@@ -38,8 +35,8 @@
       <list>
         <option value="Interface" />
         <option value="Enum" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -195,7 +192,8 @@
       <workItem from="1672933369447" duration="6243000" />
       <workItem from="1673007151280" duration="3959000" />
       <workItem from="1673033094122" duration="5745000" />
-      <workItem from="1673092054490" duration="23485000" />
+      <workItem from="1673092054490" duration="24856000" />
+      <workItem from="1673175581222" duration="16276000" />
     </task>
     <task id="LOCAL-00001" summary="pom">
       <created>1670966715965</created>
@@ -260,7 +258,21 @@
       <option name="project" value="LOCAL" />
       <updated>1672948009894</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Generowanie sekwencji ruchów">
+      <created>1673133449522</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1673133449522</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Generowanie sekwencji ruchów">
+      <created>1673184335809</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1673184335809</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,7 +299,8 @@
     <MESSAGE value="Podświetlanie pól na które można przesunąć pionek, tylko dla PolishCheckers, zwykły pionek" />
     <MESSAGE value="Podświetlanie pól na które można przesunąć pionek, tylko dla PolishCheckers, damka" />
     <MESSAGE value="Sprawdzanie pojedyńczych ruchów dla każdego rodzaju pionka, tworzenie pionków z odpowiednim State" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sprawdzanie pojedyńczych ruchów dla każdego rodzaju pionka, tworzenie pionków z odpowiednim State" />
+    <MESSAGE value="Generowanie sekwencji ruchów" />
+    <option name="LAST_COMMIT_MESSAGE" value="Generowanie sekwencji ruchów" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

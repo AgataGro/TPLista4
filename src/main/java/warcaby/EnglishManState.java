@@ -68,14 +68,21 @@ public class EnglishManState implements State{
             }
         }
         result.clear();
+        boolean contained=false;
         for (List<Square> squares : endResult) {
-            if(result.isEmpty())result.add(squares);
-            else if(result.get(0).size()<squares.size()){
-                result.clear();
-                result.add(squares);
-            }
-            else if(result.get(0).size()==squares.size()){
-                result.add(squares);
+            if (result.isEmpty()) result.add(squares);
+            else {
+                for (int k = 0; k < result.size(); k++) {
+                    if (!contained) {
+                        if (squares.containsAll(result.get(k))) {
+                            contained = true;
+                            result.remove(k);
+                            result.add(squares);
+                        }
+                    }
+                }
+                if(!contained)result.add(squares);
+                contained=false;
             }
         }
         return result;
