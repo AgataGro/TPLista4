@@ -180,6 +180,10 @@ public class PolishCheckers extends Application {
                 temp.setStroke(null);
             }
         });
+        
+        piece.setOnMouseDragged(e -> {
+            piece.toFront();
+        });
 
         return piece;
     }
