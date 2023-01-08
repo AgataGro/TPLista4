@@ -33,7 +33,7 @@ public class EnglishManState implements State{
         List<List<Square>> result = new ArrayList<>(), endResult = new ArrayList<>();
         current = availibleMoves(piece, board);
         List<Square> list;
-
+        board[piece.getOldX()/70][piece.getOldY()/70].setPiece(null);
         if(current.size()>0){
             for (Square square : current) {
                 list = new ArrayList<>(steps);
@@ -67,7 +67,18 @@ public class EnglishManState implements State{
                 endResult.add(squares);
             }
         }
-        return endResult;
+        result.clear();
+        for (List<Square> squares : endResult) {
+            if(result.isEmpty())result.add(squares);
+            else if(result.get(0).size()<squares.size()){
+                result.clear();
+                result.add(squares);
+            }
+            else if(result.get(0).size()==squares.size()){
+                result.add(squares);
+            }
+        }
+        return result;
     }
 
     @Override

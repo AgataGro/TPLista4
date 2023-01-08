@@ -1,5 +1,7 @@
 package warcaby;
 
+import javafx.scene.paint.Color;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +42,7 @@ public class TurkishManState implements State{
         List<List<Square>> result = new ArrayList<>(), endResult = new ArrayList<>();
         current = availibleMoves(piece, board);
         List<Square> list;
-
+        board[piece.getOldX()/70][piece.getOldY()/70].setPiece(null);
         if(current.size()>0){
             for (Square square : current) {
                 list = new ArrayList<>(steps);
@@ -52,10 +54,15 @@ public class TurkishManState implements State{
                     List<Square> j = new ArrayList<>(jumped);
                     xdif=xdif/2;
                     ydif=ydif/2;
+                    //sprawdzenie czy nie przeskakujemy nad ostanio zbitym pionkiem
                     if (j.lastIndexOf(board[piece.getOldX()/70 + xdif][piece.getOldY()/70 + ydif])!=j.size()-1) {
                         j.add(board[piece.getOldX()/70 + xdif][piece.getOldY()/70 + ydif]);
-                        System.out.println(list);
-                        result.addAll(moveSequence(p, board, list, j));
+                        board[piece.getOldX()/70 + xdif][piece.getOldY()/70 + ydif].setPiece(null);
+                        //zakończenie ruchu jeśli pionek przechodzi na wiersz najbliżej przeciwnika
+                        if((square.getY()/70==7&&piece.getColor()== Color.BLACK)||(square.getY()/70==0&&piece.getColor()== Color.WHITE)){
+                            result.add(list);
+                        }
+                        else result.addAll(moveSequence(p, board, list, j));
                     }
                 } else {
                     if (steps.isEmpty()) {
@@ -72,7 +79,18 @@ public class TurkishManState implements State{
                 endResult.add(squares);
             }
         }
-        return endResult;
+        result.clear();
+        for (List<Square> squares : endResult) {
+            if(result.isEmpty())result.add(squares);
+            else if(result.get(0).size()<squares.size()){
+                result.clear();
+                result.add(squares);
+            }
+            else if(result.get(0).size()==squares.size()){
+                result.add(squares);
+            }
+        }
+        return result;
     }
 
     @Override

@@ -108,14 +108,7 @@ class PolishManStateTest {
         List<List<Square>> result=new ArrayList<>();
         List<Square> current=new ArrayList<>();
         current.add(tiles[4][1]);
-        result.add(current);
         current.add(tiles[2][3]);
-        result.add(current);
-        current=new ArrayList<>();
-        current.add(tiles[7][2]);
-        result.add(current);
-        current=new ArrayList<>();
-        current.add(tiles[4][5]);
         result.add(current);
         assertEquals(output.size(), result.size());
         assertTrue(output.containsAll(result));
@@ -123,12 +116,10 @@ class PolishManStateTest {
         tiles = singleKillingSetup();
         piece = tiles[0][3].getPiece();
         output = piece.moveSequences(tiles);
-        result=new ArrayList<>();
-        current=new ArrayList<>();
+        result.clear();
+        current.clear();
         current.add(tiles[2][1]);
-        result.add(current);
         current.add(tiles[4][3]);
-        result.add(current);
         current.add(tiles[6][5]);
         result.add(current);
 
