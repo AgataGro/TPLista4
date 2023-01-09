@@ -95,7 +95,7 @@ public class PolishCheckers extends Application {
      * @return typ ruchu, który wykonaliśmy i pionek, który zbilliśmy albo null, jeżeli nie zbiliśmy żadnego
      */
     private boolean checkMove(Piece piece, int x, int y) {
-        List<Square> availableMoves = piece.getAvailableMoves(tiles);
+        List<Square> availableMoves = piece.getAvailibleMoves(tiles);
         if(availableMoves.contains(tiles[x][y]))
             return true;
         else
@@ -172,7 +172,7 @@ public class PolishCheckers extends Application {
          * wcześniej się podświetliły na klliknięcie, mają wrócić do niepodświetlonego stanu
          */
         piece.setOnMouseExited(e -> {
-            List<Square> availibleMoves = piece.getAvailableMoves(tiles);
+            List<Square> availibleMoves = piece.getAvailibleMoves(tiles);
             Square temp;
             for(int i=0;i< availibleMoves.size();i++)
             {

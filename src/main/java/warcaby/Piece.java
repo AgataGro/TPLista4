@@ -3,6 +3,7 @@ package warcaby;
 import javafx.scene.shape.Circle;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Piece extends Circle {
@@ -46,4 +47,6 @@ public abstract class Piece extends Circle {
     public void changeState(){
         state.changeState();
     }
+
+    public State getState() {return this.state;}
 }

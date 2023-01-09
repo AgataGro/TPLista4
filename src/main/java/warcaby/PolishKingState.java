@@ -69,7 +69,7 @@ public class PolishKingState implements State{
                 }
                 if (killed!=null) {
                     list.add(square);
-                    Piece p = new Piece((int) square.getX()+35,(int) square.getY()+35,30, piece.getColor(), new PolishKingState());
+                    Piece p = new PolishPiece((int) square.getX()+35,(int) square.getY()+35,30, piece.getColor(), new PolishKingState());
                     List<Square> j = new ArrayList<>(jumped);
                     if (!j.contains(killed)) {
                         j.add(killed);

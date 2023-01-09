@@ -67,7 +67,7 @@ public class TurkishCheckers extends Application {
     }
 
     private boolean checkMove(Piece piece, int x, int y) {
-        List<Square> availableMoves = piece.getAvailableMoves(tiles);
+        List<Square> availableMoves = piece.getAvailibleMoves(tiles);
         if(availableMoves.contains(tiles[x][y]))
             return true;
         else
@@ -75,7 +75,7 @@ public class TurkishCheckers extends Application {
     }
 
     private Piece createPiece(int x, int y, int r, Color color, State state) {
-        Piece piece = new Piece(x,y,r,color,state);
+        Piece piece = new TurkishPiece(x,y,r,color,state);
 
         /*
          * metoda aktywowana, kiedy puszczamy pionek
@@ -117,7 +117,7 @@ public class TurkishCheckers extends Application {
         });
 
         piece.setOnMouseClicked(e -> {
-            List<Square> availibleMoves = piece.getAvailableMoves(tiles);
+            List<Square> availibleMoves = piece.getAvailibleMoves(tiles);
             Square temp;
             for(int i=0;i< availibleMoves.size();i++)
             {
@@ -132,7 +132,7 @@ public class TurkishCheckers extends Application {
          * wcześniej się podświetliły na klliknięcie, mają wrócić do niepodświetlonego stanu
          */
         piece.setOnMouseExited(e -> {
-            List<Square> availibleMoves = piece.getAvailableMoves(tiles);
+            List<Square> availibleMoves = piece.getAvailibleMoves(tiles);
             Square temp;
             for(int i=0;i< availibleMoves.size();i++)
             {

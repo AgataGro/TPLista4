@@ -44,7 +44,7 @@ public class PolishManState implements State{
                 int ydif = (int) (square.getY()/70-piece.getOldY()/70);
                 if (Math.abs(xdif) > 1) {
                     list.add(square);
-                    Piece p = new Piece((int) square.getX()+35,(int) square.getY()+35,30, piece.getColor(), new PolishManState());
+                    Piece p = new PolishPiece((int) square.getX()+35,(int) square.getY()+35,30, piece.getColor(), new PolishManState());
                     List<Square> j = new ArrayList<>(jumped);
                     xdif=xdif/2;
                     ydif=ydif/2;

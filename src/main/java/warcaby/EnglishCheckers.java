@@ -9,6 +9,8 @@ import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.text.Font;
 
+import java.util.List;
+
 public class EnglishCheckers extends Application {
 
     private Group tilesGroup = new Group();
@@ -76,7 +78,7 @@ public class EnglishCheckers extends Application {
     }
 
     private boolean checkMove(Piece piece, int x, int y) {
-        List<Square> availableMoves = piece.getAvailableMoves(tiles);
+        List<Square> availableMoves = piece.getAvailibleMoves(tiles);
         if(availableMoves.contains(tiles[x][y]))
             return true;
         else
@@ -128,7 +130,7 @@ public class EnglishCheckers extends Application {
         });
 
         piece.setOnMouseClicked(e -> {
-            List<Square> availibleMoves = piece.getAvailableMoves(tiles);
+            List<Square> availibleMoves = piece.getAvailibleMoves(tiles);
             Square temp;
             for(int i=0;i< availibleMoves.size();i++)
             {
@@ -139,7 +141,7 @@ public class EnglishCheckers extends Application {
         });
 
         piece.setOnMouseExited(e -> {
-            List<Square> availibleMoves = piece.getAvailableMoves(tiles);
+            List<Square> availibleMoves = piece.getAvailibleMoves(tiles);
             Square temp;
             for(int i=0;i< availibleMoves.size();i++)
             {
