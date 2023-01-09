@@ -24,7 +24,7 @@ public class TurkishPiece extends Piece {
         setCenterX(oldX+35);
         setCenterY(oldY+35);
         if((this.getColor()==Color.WHITE && newY==0) || (this.getColor()==Color.BLACK && newY==7)) {
-            setState(state.changeState());
+            state.changeState();
             setStroke(Color.GOLD);
             setStrokeWidth(5);
         }

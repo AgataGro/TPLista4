@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Piece extends Circle {
-    private double mouseX, mouseY;
-    private int oldX, oldY;
+    protected double mouseX, mouseY;
+    protected int oldX, oldY;
     // moveDirection jest potrzebne, żeby potem zablokować ruchy pionków do tyłu
-    private int moveDirection;
-    private State state;
+    protected int moveDirection;
+    protected State state;
 
     Piece(int x, int y, int r) {
         super(x,y,r);
