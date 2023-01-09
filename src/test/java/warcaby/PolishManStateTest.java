@@ -139,7 +139,7 @@ class PolishManStateTest {
                 }
                 else {
                     if(i<4) {
-                        Piece piece = new Piece(x+35, y+35, 30, Color.BLACK, new PolishManState());
+                        Piece piece = new PolishPiece(x+35, y+35, 30, Color.BLACK, new PolishManState());
                         Square square = new Square(x,y,70,70,Color.BROWN);
                         square.setPiece(piece);
                         tiles[j][i] = square;
@@ -150,7 +150,7 @@ class PolishManStateTest {
 
                     }
                     else if(i>5) {
-                        Piece piece = new Piece(x+35, y+35, 30, Color.WHITE, new PolishManState());
+                        Piece piece = new PolishPiece(x+35, y+35, 30, Color.WHITE, new PolishManState());
                         Square square = new Square(x,y,70,70,Color.BROWN);
                         square.setPiece(piece);
                         tiles[j][i] = square;
@@ -183,13 +183,13 @@ class PolishManStateTest {
             x = 0;
             y += 70;
         }
-        tiles[2][1].setPiece(new Piece((int) (tiles[2][1].getX()+35), (int) (tiles[2][1].getY()+35),30, Color.WHITE, new PolishManState()));
-        tiles[3][2].setPiece(new Piece((int) (tiles[3][2].getX()+35), (int) (tiles[3][2].getY()+35),30, Color.BLACK, new PolishManState()));
-        tiles[5][2].setPiece(new Piece((int) (tiles[5][2].getX()+35), (int) (tiles[5][2].getY()+35),30, Color.BLACK, new PolishManState()));
-        tiles[4][3].setPiece(new Piece((int) (tiles[4][3].getX()+35), (int) (tiles[4][3].getY()+35),30, Color.WHITE, new PolishManState()));
-        tiles[6][3].setPiece(new Piece((int) (tiles[6][3].getX()+35), (int) (tiles[6][3].getY()+35),30, Color.WHITE, new PolishManState()));
-        tiles[3][4].setPiece(new Piece((int) (tiles[3][4].getX()+35), (int) (tiles[3][4].getY()+35),30, Color.WHITE, new PolishManState()));
-        tiles[5][4].setPiece(new Piece((int) (tiles[5][4].getX()+35), (int) (tiles[5][4].getY()+35),30, Color.BLACK, new PolishManState()));
+        tiles[2][1].setPiece(new PolishPiece((int) (tiles[2][1].getX()+35), (int) (tiles[2][1].getY()+35),30, Color.WHITE, new PolishManState()));
+        tiles[3][2].setPiece(new PolishPiece((int) (tiles[3][2].getX()+35), (int) (tiles[3][2].getY()+35),30, Color.BLACK, new PolishManState()));
+        tiles[5][2].setPiece(new PolishPiece((int) (tiles[5][2].getX()+35), (int) (tiles[5][2].getY()+35),30, Color.BLACK, new PolishManState()));
+        tiles[4][3].setPiece(new PolishPiece((int) (tiles[4][3].getX()+35), (int) (tiles[4][3].getY()+35),30, Color.WHITE, new PolishManState()));
+        tiles[6][3].setPiece(new PolishPiece((int) (tiles[6][3].getX()+35), (int) (tiles[6][3].getY()+35),30, Color.WHITE, new PolishManState()));
+        tiles[3][4].setPiece(new PolishPiece((int) (tiles[3][4].getX()+35), (int) (tiles[3][4].getY()+35),30, Color.WHITE, new PolishManState()));
+        tiles[5][4].setPiece(new PolishPiece((int) (tiles[5][4].getX()+35), (int) (tiles[5][4].getY()+35),30, Color.BLACK, new PolishManState()));
         return tiles;
     }
     Square[][] singleKillingSetup(){
@@ -212,10 +212,10 @@ class PolishManStateTest {
             x = 0;
             y += 70;
         }
-        tiles[1][2].setPiece(new Piece((int) (tiles[1][2].getX()+35), (int) (tiles[1][2].getY()+35),30, Color.BLACK, new PolishManState()));
-        tiles[3][2].setPiece(new Piece((int) (tiles[3][2].getX()+35), (int) (tiles[3][2].getY()+35),30, Color.BLACK, new PolishManState()));
-        tiles[0][3].setPiece(new Piece((int) (tiles[0][3].getX()+35), (int) (tiles[0][3].getY()+35),30, Color.WHITE, new PolishManState()));
-        tiles[5][4].setPiece(new Piece((int) (tiles[3][4].getX()+35), (int) (tiles[3][4].getY()+35),30, Color.BLACK, new PolishManState()));
+        tiles[1][2].setPiece(new PolishPiece((int) (tiles[1][2].getX()+35), (int) (tiles[1][2].getY()+35),30, Color.BLACK, new PolishManState()));
+        tiles[3][2].setPiece(new PolishPiece((int) (tiles[3][2].getX()+35), (int) (tiles[3][2].getY()+35),30, Color.BLACK, new PolishManState()));
+        tiles[0][3].setPiece(new PolishPiece((int) (tiles[0][3].getX()+35), (int) (tiles[0][3].getY()+35),30, Color.WHITE, new PolishManState()));
+        tiles[5][4].setPiece(new PolishPiece((int) (tiles[3][4].getX()+35), (int) (tiles[3][4].getY()+35),30, Color.BLACK, new PolishManState()));
         return tiles;
     }
 }

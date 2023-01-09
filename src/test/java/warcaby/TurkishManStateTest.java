@@ -95,12 +95,12 @@ class TurkishManStateTest {
                     square.setFill(Color.BROWN);
                 tiles[j][i] = square;
                 if(i == 1 || i == 2) {
-                    Piece piece = new Piece(x+35,y+35,30,Color.BLACK, new TurkishManState());
+                    Piece piece = new TurkishPiece(x+35,y+35,30,Color.BLACK, new TurkishManState());
                     square.setPiece(piece);
 
                 }
                 else if(i == 5 || i == 6) {
-                    Piece piece = new Piece(x+35,y+35,30,Color.WHITE, new TurkishManState());
+                    Piece piece = new TurkishPiece(x+35,y+35,30,Color.WHITE, new TurkishManState());
                     square.setPiece(piece);
 
                 }
@@ -128,14 +128,14 @@ class TurkishManStateTest {
             x = 0;
             y += 70;
         }
-        tiles[5][1].setPiece(new Piece((int) (tiles[5][1].getX()+35), (int) (tiles[5][1].getY()+35),30, Color.WHITE, new TurkishManState()));
-        tiles[2][2].setPiece(new Piece((int) (tiles[2][2].getX()+35), (int) (tiles[2][2].getY()+35),30, Color.BLACK, new TurkishManState()));
-        tiles[5][2].setPiece(new Piece((int) (tiles[5][2].getX()+35), (int) (tiles[5][2].getY()+35),30, Color.BLACK, new TurkishManState()));
-        tiles[2][3].setPiece(new Piece((int) (tiles[2][3].getX()+35), (int) (tiles[2][3].getY()+35),30, Color.WHITE, new TurkishManState()));
-        tiles[3][3].setPiece(new Piece((int) (tiles[3][3].getX()+35), (int) (tiles[3][3].getY()+35),30, Color.BLACK, new TurkishManState()));
-        tiles[5][3].setPiece(new Piece((int) (tiles[5][3].getX()+35), (int) (tiles[5][3].getY()+35),30, Color.BLACK, new TurkishManState()));
-        tiles[3][4].setPiece(new Piece((int) (tiles[3][4].getX()+35), (int) (tiles[3][4].getY()+35),30, Color.WHITE, new TurkishManState()));
-        tiles[5][4].setPiece(new Piece((int) (tiles[5][4].getX()+35), (int) (tiles[5][4].getY()+35),30, Color.WHITE, new TurkishManState()));
+        tiles[5][1].setPiece(new TurkishPiece((int) (tiles[5][1].getX()+35), (int) (tiles[5][1].getY()+35),30, Color.WHITE, new TurkishManState()));
+        tiles[2][2].setPiece(new TurkishPiece((int) (tiles[2][2].getX()+35), (int) (tiles[2][2].getY()+35),30, Color.BLACK, new TurkishManState()));
+        tiles[5][2].setPiece(new TurkishPiece((int) (tiles[5][2].getX()+35), (int) (tiles[5][2].getY()+35),30, Color.BLACK, new TurkishManState()));
+        tiles[2][3].setPiece(new TurkishPiece((int) (tiles[2][3].getX()+35), (int) (tiles[2][3].getY()+35),30, Color.WHITE, new TurkishManState()));
+        tiles[3][3].setPiece(new TurkishPiece((int) (tiles[3][3].getX()+35), (int) (tiles[3][3].getY()+35),30, Color.BLACK, new TurkishManState()));
+        tiles[5][3].setPiece(new TurkishPiece((int) (tiles[5][3].getX()+35), (int) (tiles[5][3].getY()+35),30, Color.BLACK, new TurkishManState()));
+        tiles[3][4].setPiece(new TurkishPiece((int) (tiles[3][4].getX()+35), (int) (tiles[3][4].getY()+35),30, Color.WHITE, new TurkishManState()));
+        tiles[5][4].setPiece(new TurkishPiece((int) (tiles[5][4].getX()+35), (int) (tiles[5][4].getY()+35),30, Color.WHITE, new TurkishManState()));
 
         return tiles;
     }

@@ -139,7 +139,7 @@ class EnglishManStateTest {
                 }
                 else {
                     if(i<3) {
-                        Piece piece = new Piece(x+35, y+35, 30, Color.BLACK, new EnglishManState());
+                        Piece piece = new EnglishPiece(x+35, y+35, 30, Color.BLACK, new EnglishManState());
                         Square square = new Square(x,y,70,70,Color.BROWN);
                         square.setPiece(piece);
                         tiles[j][i] = square;
@@ -150,7 +150,7 @@ class EnglishManStateTest {
 
                     }
                     else {
-                        Piece piece = new Piece(x+35, y+35, 30, Color.WHITE, new EnglishManState());
+                        Piece piece = new EnglishPiece(x+35, y+35, 30, Color.WHITE, new EnglishManState());
                         Square square = new Square(x,y,70,70,Color.BROWN);
                         square.setPiece(piece);
                         tiles[j][i] = square;
@@ -183,13 +183,13 @@ class EnglishManStateTest {
             x = 0;
             y += 70;
         }
-        tiles[2][1].setPiece(new Piece((int) (tiles[2][1].getX()+35), (int) (tiles[2][1].getY()+35),30, Color.WHITE, new EnglishManState()));
-        tiles[3][2].setPiece(new Piece((int) (tiles[3][2].getX()+35), (int) (tiles[3][2].getY()+35),30, Color.BLACK, new EnglishManState()));
-        tiles[5][2].setPiece(new Piece((int) (tiles[5][2].getX()+35), (int) (tiles[5][2].getY()+35),30, Color.BLACK, new EnglishManState()));
-        tiles[4][3].setPiece(new Piece((int) (tiles[4][3].getX()+35), (int) (tiles[4][3].getY()+35),30, Color.WHITE, new EnglishManState()));
-        tiles[6][3].setPiece(new Piece((int) (tiles[6][3].getX()+35), (int) (tiles[6][3].getY()+35),30, Color.WHITE, new EnglishManState()));
-        tiles[3][4].setPiece(new Piece((int) (tiles[3][4].getX()+35), (int) (tiles[3][4].getY()+35),30, Color.WHITE, new EnglishManState()));
-        tiles[5][4].setPiece(new Piece((int) (tiles[5][4].getX()+35), (int) (tiles[5][4].getY()+35),30, Color.BLACK, new EnglishManState()));
+        tiles[2][1].setPiece(new EnglishPiece((int) (tiles[2][1].getX()+35), (int) (tiles[2][1].getY()+35),30, Color.WHITE, new EnglishManState()));
+        tiles[3][2].setPiece(new EnglishPiece((int) (tiles[3][2].getX()+35), (int) (tiles[3][2].getY()+35),30, Color.BLACK, new EnglishManState()));
+        tiles[5][2].setPiece(new EnglishPiece((int) (tiles[5][2].getX()+35), (int) (tiles[5][2].getY()+35),30, Color.BLACK, new EnglishManState()));
+        tiles[4][3].setPiece(new EnglishPiece((int) (tiles[4][3].getX()+35), (int) (tiles[4][3].getY()+35),30, Color.WHITE, new EnglishManState()));
+        tiles[6][3].setPiece(new EnglishPiece((int) (tiles[6][3].getX()+35), (int) (tiles[6][3].getY()+35),30, Color.WHITE, new EnglishManState()));
+        tiles[3][4].setPiece(new EnglishPiece((int) (tiles[3][4].getX()+35), (int) (tiles[3][4].getY()+35),30, Color.WHITE, new EnglishManState()));
+        tiles[5][4].setPiece(new EnglishPiece((int) (tiles[5][4].getX()+35), (int) (tiles[5][4].getY()+35),30, Color.BLACK, new EnglishManState()));
         return tiles;
     }
     Square[][] singleKillingSetup(){
@@ -212,10 +212,10 @@ class EnglishManStateTest {
             x = 0;
             y += 70;
         }
-        tiles[1][4].setPiece(new Piece((int) (tiles[1][4].getX()+35), (int) (tiles[1][4].getY()+35),30, Color.WHITE, new EnglishManState()));
-        tiles[2][3].setPiece(new Piece((int) (tiles[2][3].getX()+35), (int) (tiles[2][3].getY()+35),30, Color.BLACK, new EnglishManState()));
-        tiles[4][1].setPiece(new Piece((int) (tiles[4][1].getX()+35), (int) (tiles[4][1].getY()+35),30, Color.BLACK, new EnglishManState()));
-        tiles[6][1].setPiece(new Piece((int) (tiles[6][1].getX()+35), (int) (tiles[6][1].getY()+35),30, Color.BLACK, new EnglishManState()));
+        tiles[1][4].setPiece(new EnglishPiece((int) (tiles[1][4].getX()+35), (int) (tiles[1][4].getY()+35),30, Color.WHITE, new EnglishManState()));
+        tiles[2][3].setPiece(new EnglishPiece((int) (tiles[2][3].getX()+35), (int) (tiles[2][3].getY()+35),30, Color.BLACK, new EnglishManState()));
+        tiles[4][1].setPiece(new EnglishPiece((int) (tiles[4][1].getX()+35), (int) (tiles[4][1].getY()+35),30, Color.BLACK, new EnglishManState()));
+        tiles[6][1].setPiece(new EnglishPiece((int) (tiles[6][1].getX()+35), (int) (tiles[6][1].getY()+35),30, Color.BLACK, new EnglishManState()));
         return tiles;
     }
 }
