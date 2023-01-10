@@ -7,61 +7,38 @@ import java.util.List;
 
 public class TurkishManState implements State{
     @Override
-    public List<Square> availibleMoves(Piece piece, Square[][] board) {
-        List<Square> result = new ArrayList<>();
-        int x = piece.getOldX()/70;
-        int y = piece.getOldY()/70;
-        int moveDirection = piece.getMoveDirection();
-        for(int i=-1;i<=1;i=i+2)
-        {
-            if(x+i>=0 && x+i<=7) {
-                if (board[x + i][y].hasPiece()) {
-                    if (x + 2 * i >= 0 && x + 2 * i <= 7) {
-                        if ((board[x + i][y].getPiece().getColor() != piece.getColor() && !board[x + 2 * i][y].hasPiece())) {
-                            result.add(board[x + 2 * i][y]);
-                        }
-                    }
-                } else result.add(board[x + i][y]);
-            }
-        }
-        if(y+moveDirection>=0 && y+moveDirection<=7) {
-            if (board[x][y+moveDirection].hasPiece()) {
-                if (y + 2 * moveDirection >= 0 && y + 2 * moveDirection <= 7) {
-                    if ((board[x][y+moveDirection].getPiece().getColor() != piece.getColor() && !board[x][y + 2 * moveDirection].hasPiece())) {
-                        result.add(board[x][y+2*moveDirection]);
-                    }
-                }
-            } else result.add(board[x][y+moveDirection]);
+    public List<SingleMove> availibleMoves(Piece piece, Square[][] board) {
+        List<SingleMove> result= new ArrayList<>();
+
+        for (Direction direction : Direction.values()) {
+            result.addAll(move(piece, board, direction));
         }
         return result;
     }
 
     @Override
-    public List<List<Square>> moveSequence(Piece piece, Square[][] board, List<Square> steps, List<Square> jumped) {
-        List<Square> current;
-        List<List<Square>> result = new ArrayList<>(), endResult = new ArrayList<>();
+    public List<List<SingleMove>> moveSequence(Piece piece, Square[][] board, List<SingleMove> steps) {
+        //Inicjalizacja zmiennych
+        List<SingleMove> current, list;
+        List<List<SingleMove>> result = new ArrayList<>(), endResult = new ArrayList<>();
         current = availibleMoves(piece, board);
-        List<Square> list;
+        //usunięcie pionka z pola startowego
         board[piece.getOldX()/70][piece.getOldY()/70].setPiece(null);
+        //zmienna do sprawdzenia czy przeskoczyliśmy nad danym pionkiem
         if(current.size()>0){
-            for (Square square : current) {
+            for (SingleMove square : current) {
                 list = new ArrayList<>(steps);
-                int xdif = (int) (square.getX()/70-piece.getOldX()/70);
-                int ydif = (int) (square.getY()/70-piece.getOldY()/70);
-                if ((Math.abs(xdif) > 1&&ydif==0)||(Math.abs(ydif) > 1&&xdif==0)) {
+                if (square.getKilled()!=null) {
                     list.add(square);
-                    Piece p = new TurkishPiece((int) square.getX()+35,(int) square.getY()+35,30, piece.getColor(), new TurkishManState());
-                    List<Square> j = new ArrayList<>(jumped);
-                    xdif=xdif/2;
-                    ydif=ydif/2;
-                    j.add(board[piece.getOldX()/70 + xdif][piece.getOldY()/70 + ydif]);
-                    board[piece.getOldX()/70 + xdif][piece.getOldY()/70 + ydif].setPiece(null);
-                    //zakończenie ruchu jeśli pionek przechodzi na wiersz najbliżej przeciwnika
-                    if((square.getY()/70==7&&piece.getColor()== Color.BLACK)||(square.getY()/70==0&&piece.getColor()== Color.WHITE)){
+                    Piece p = new PolishPiece((int) square.getEnd().getX()+35,(int) square.getEnd().getY()+35,30, piece.getColor(), new TurkishManState());
+                    board[(int) (square.getKilled().getX()/70)][(int) (square.getKilled().getY()/70)].setPiece(null);
+                    if(p.getOldY()/70==7&&p.getColor()==Color.BLACK){
                         result.add(list);
                     }
-                    else result.addAll(moveSequence(p, board, list, j));
-
+                    else if(p.getOldY()/70==0&&p.getColor()==Color.WHITE){
+                        result.add(list);
+                    }
+                    else result.addAll(moveSequence(p, board, list));
                 } else {
                     if (steps.isEmpty()) {
                         list.add(square);
@@ -72,28 +49,89 @@ public class TurkishManState implements State{
             }
         }
         else result.add(steps);
-        for (List<Square> squares : result) {
+        for (List<SingleMove> squares : result) {
             if (!endResult.contains(squares)) {
-                endResult.add(squares);
+                {
+                    endResult.add(squares);
+                }
             }
         }
-
         result.clear();
-        for (List<Square> squares : endResult) {
+        for (List<SingleMove> squares : endResult) {
             if(result.isEmpty())result.add(squares);
             else if(result.get(0).size()<squares.size()){
                 result.clear();
                 result.add(squares);
             }
             else if(result.get(0).size()==squares.size()){
+                if(result.get(0).get(0).getKilled()==null&&squares.get(0).getKilled()!=null){
+                    result.clear();
+                }
                 result.add(squares);
             }
         }
         return result;
     }
 
+
     @Override
     public State changeState() {
         return new TurkishKingState();
+    }
+
+    @Override
+    public List<SingleMove> move(Piece piece, Square[][] tiles, Direction direction) {
+        List<SingleMove> result=new ArrayList<>();
+        int x = piece.getOldX()/70;
+        int y = piece.getOldY()/70;
+        int moveDirection = piece.getMoveDirection();
+        switch (direction){
+            case Up -> {
+                if(y-1>=0){
+                    Piece p = tiles[x][y-1].getPiece();
+                    if(p==null){
+                        if(moveDirection==-1)result.add(new SingleMove(tiles[x][y],tiles[x][y-1],null));
+                    }
+                    else if(piece.getColor()!=p.getColor()&&y-2>=0)
+                    {
+                        if(tiles[x][y-2].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x][y-2],tiles[x][y-1]));
+                    }
+                }
+            }
+            case Down -> {
+                if(y-1<=7){
+                    Piece p = tiles[x][y+1].getPiece();
+                    if(p==null){
+                        if(moveDirection==1)result.add(new SingleMove(tiles[x][y],tiles[x][y+1],null));
+                    }
+                    else if(piece.getColor()!=p.getColor()&&y+2<=7){
+                        if(tiles[x][y+2].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x][y+2],tiles[x][y+1]));
+                    }
+                }
+            }
+            case Left -> {
+                if(x-1>=0){
+                    Piece p = tiles[x-1][y].getPiece();
+                    if(p==null){
+                        result.add(new SingleMove(tiles[x][y],tiles[x-1][y],null));
+                    }
+                    else if(piece.getColor()!=p.getColor()&&x-2>=0){
+                        if(tiles[x-2][y].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x-2][y],tiles[x-1][y]));
+                    }
+                }
+            }
+            case Right -> {
+                if(x+1<=9){
+                    Piece p = tiles[x+1][y].getPiece();
+                    if(p==null){
+                        result.add(new SingleMove(tiles[x][y],tiles[x+1][y],null));
+                    }
+                    else if(piece.getColor()!=p.getColor()&&x+2<=9){
+                        if(tiles[x+2][y].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x+2][y],tiles[x+1][y]));
+                    }
+                }
+            }
+        }
+        return result;
     }
 }
