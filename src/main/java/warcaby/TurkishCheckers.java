@@ -11,7 +11,7 @@ import javafx.scene.text.Font;
 
 import java.util.List;
 
-public class TurkishCheckers extends Application {
+public class TurkishCheckers extends Application implements Checkers{
 
     Square[][] tiles = new Square[8][8];
     Group tilesGroup = new Group();

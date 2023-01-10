@@ -11,7 +11,7 @@ import javafx.scene.text.Font;
 
 import java.util.List;
 
-public class PolishCheckers extends Application {
+public class PolishCheckers extends Application implements Checkers {
 
     private Group tilesGroup = new Group();
     private Group piecesGroup = new Group();

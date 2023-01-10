@@ -11,7 +11,7 @@ import javafx.scene.text.Font;
 
 import java.util.List;
 
-public class EnglishCheckers extends Application {
+public class EnglishCheckers extends Application implements Checkers{
 
     private Group tilesGroup = new Group();
     private Group piecesGroup = new Group();
@@ -96,8 +96,6 @@ public class EnglishCheckers extends Application {
         piece.setOnMouseReleased(e -> {
             int newX = getScenePlace(e.getSceneX());
             int newY = getScenePlace(e.getSceneY());
-
-            MoveDetails details;
 
             if(newX<0 || newY<0 || newX>7 || newY>7 || !checkMove(piece,newX,newY))
                 piece.notMove();
