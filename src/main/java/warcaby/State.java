@@ -16,7 +16,8 @@ public interface State {
      * @param board pola na wykorzystywanej planszy
      * @return lista pól, na które można przesunąć pionek
      */
-    public List<Square> availibleMoves(Piece piece, Square[][] board);
-    public List<List<Square>> moveSequence(Piece piece, Square[][] board, List<Square> steps, List<Square> jumped);
+    public List<SingleMove> availibleMoves(Piece piece, Square[][] board);
+    public List<List<SingleMove>> moveSequence(Piece piece, Square[][] board, List<SingleMove> steps);
     public State changeState();
+    public List<SingleMove> move(Piece piece, Square[][] tiles, Direction direction);
 }

@@ -88,24 +88,27 @@ public class TurkishManState implements State{
         switch (direction){
             case Up -> {
                 if(y-1>=0){
-                    Piece p = tiles[x][y-1].getPiece();
-                    if(p==null){
-                        if(moveDirection==-1)result.add(new SingleMove(tiles[x][y],tiles[x][y-1],null));
-                    }
-                    else if(piece.getColor()!=p.getColor()&&y-2>=0)
-                    {
-                        if(tiles[x][y-2].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x][y-2],tiles[x][y-1]));
+                    if(moveDirection==-1) {
+                        Piece p = tiles[x][y - 1].getPiece();
+                        if (p == null) {
+                            result.add(new SingleMove(tiles[x][y], tiles[x][y - 1], null));
+                        } else if (piece.getColor() != p.getColor() && y - 2 >= 0) {
+                            if (tiles[x][y - 2].getPiece() == null)
+                                result.add(new SingleMove(tiles[x][y], tiles[x][y - 2], tiles[x][y - 1]));
+                        }
                     }
                 }
             }
             case Down -> {
                 if(y-1<=7){
-                    Piece p = tiles[x][y+1].getPiece();
-                    if(p==null){
-                        if(moveDirection==1)result.add(new SingleMove(tiles[x][y],tiles[x][y+1],null));
-                    }
-                    else if(piece.getColor()!=p.getColor()&&y+2<=7){
-                        if(tiles[x][y+2].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x][y+2],tiles[x][y+1]));
+                    if(moveDirection==1) {
+                        Piece p = tiles[x][y + 1].getPiece();
+                        if (p == null) {
+                            result.add(new SingleMove(tiles[x][y], tiles[x][y + 1], null));
+                        } else if (piece.getColor() != p.getColor() && y + 2 <= 7) {
+                            if (tiles[x][y + 2].getPiece() == null)
+                                result.add(new SingleMove(tiles[x][y], tiles[x][y + 2], tiles[x][y + 1]));
+                        }
                     }
                 }
             }

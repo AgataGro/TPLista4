@@ -41,9 +41,15 @@ public abstract class Piece extends Circle {
     }
 
     public List<Square> getAvailibleMoves(Square[][] board) {
-        return state.availibleMoves(this, board);
+        List<SingleMove> moves=state.availibleMoves(this, board);
+        List<Square> result=new ArrayList<>();
+        for (SingleMove move : moves) {
+            result.add(move.getEnd());
+        }
+
+        return result;
     }
-    public List<List<Square>> moveSequences(Square[][] board){return  state.moveSequence(this, board, new ArrayList<>(), new ArrayList<>());}
+    public List<List<SingleMove>> moveSequences(Square[][] board){return  state.moveSequence(this, board, new ArrayList<>());}
     public void changeState(){
         state.changeState();
     }
