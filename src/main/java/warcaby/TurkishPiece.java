@@ -2,8 +2,7 @@ package warcaby;
 
 import javafx.scene.paint.Color;
 
-public class TurkishPiece extends Piece {
-
+public class TurkishPiece extends Piece{
     TurkishPiece(int x, int y, int r, Color color, State state) {
         super(x,y,r);
         setFill(color);
@@ -24,7 +23,7 @@ public class TurkishPiece extends Piece {
         setCenterX(oldX+35);
         setCenterY(oldY+35);
         if((this.getColor()==Color.WHITE && newY==0) || (this.getColor()==Color.BLACK && newY==7)) {
-            state.changeState();
+            state = state.changeState();
             setStroke(Color.GOLD);
             setStrokeWidth(5);
         }
