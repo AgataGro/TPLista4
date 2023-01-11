@@ -30,7 +30,7 @@ public class TurkishManState implements State{
                 list = new ArrayList<>(steps);
                 if (square.getKilled()!=null) {
                     list.add(square);
-                    Piece p = new PolishPiece((int) square.getEnd().getX()+35,(int) square.getEnd().getY()+35,30, piece.getColor(), new TurkishManState());
+                    Piece p = new TurkishPiece((int) square.getEnd().getX()+35,(int) square.getEnd().getY()+35,30, piece.getColor(), new TurkishManState());
                     board[(int) (square.getKilled().getX()/70)][(int) (square.getKilled().getY()/70)].setPiece(null);
                     if(p.getOldY()/70==7&&p.getColor()==Color.BLACK){
                         result.add(list);

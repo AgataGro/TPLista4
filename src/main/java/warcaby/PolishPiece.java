@@ -18,7 +18,6 @@ public class PolishPiece extends Piece{
 
         this.state = state;
     }
-
     @Override
     public void move(int newX, int newY) {
         oldX = newX*70;

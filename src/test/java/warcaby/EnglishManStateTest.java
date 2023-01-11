@@ -100,31 +100,33 @@ class EnglishManStateTest {
     void moveSequence() {
         Square[][] tiles = variousKillingSetup();
         Piece piece = tiles[6][3].getPiece();
-        List<List<Square>> output = piece.moveSequences(tiles);
-        List<List<Square>> result=new ArrayList<>();
-        List<Square> current=new ArrayList<>();
-        current.add(tiles[4][1]);
-        result.add(current);
-        current.clear();
-        current.add(tiles[7][2]);
+        List<List<SingleMove>> output = piece.moveSequences(tiles);
+        List<List<SingleMove>> result=new ArrayList<>();
+        List<SingleMove> current=new ArrayList<>();
+        current.add(new SingleMove(tiles[6][3],tiles[4][1], tiles[5][2]));
         result.add(current);
         assertEquals(output.size(), result.size());
-        assertTrue(output.containsAll(result));
+        assertSame(output.get(0).get(0).getStart(), result.get(0).get(0).getStart());
+        assertSame(output.get(0).get(0).getEnd(), result.get(0).get(0).getEnd());
+        assertSame(output.get(0).get(0).getKilled(), result.get(0).get(0).getKilled());
+
 
         tiles = singleKillingSetup();
         piece = tiles[1][4].getPiece();
-        output = piece.moveSequences(tiles);
+        output=piece.moveSequences(tiles);
         result.clear();
         current.clear();
-        current.add(tiles[0][3]);
-        result.add(current);
-        current.clear();
-        current.add(tiles[3][2]);
-        current.add(tiles[5][0]);
+        current.add(new SingleMove(tiles[1][4],tiles[3][2],tiles[2][3]));
+        current.add(new SingleMove(tiles[3][2],tiles[5][0],tiles[4][1]));
         result.add(current);
 
         assertEquals(output.size(), result.size());
-        assertTrue(output.containsAll(result));
+        assertSame(output.get(0).get(0).getStart(), result.get(0).get(0).getStart());
+        assertSame(output.get(0).get(0).getEnd(), result.get(0).get(0).getEnd());
+        assertSame(output.get(0).get(0).getKilled(), result.get(0).get(0).getKilled());
+        assertSame(output.get(0).get(1).getStart(), result.get(0).get(1).getStart());
+        assertSame(output.get(0).get(1).getEnd(), result.get(0).get(1).getEnd());
+        assertSame(output.get(0).get(1).getKilled(), result.get(0).get(1).getKilled());
     }
 
     Square[][] initialSetting(){

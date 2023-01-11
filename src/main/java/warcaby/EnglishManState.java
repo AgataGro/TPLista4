@@ -4,6 +4,7 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class EnglishManState implements State{
     @Override
@@ -33,7 +34,7 @@ public class EnglishManState implements State{
                 list = new ArrayList<>(steps);
                 if (square.getKilled()!=null) {
                     list.add(square);
-                    Piece p = new PolishPiece((int) square.getEnd().getX()+35,(int) square.getEnd().getY()+35,30, piece.getColor(), new EnglishManState());
+                    Piece p = new EnglishPiece((int) square.getEnd().getX()+35,(int) square.getEnd().getY()+35,30, piece.getColor(), new EnglishManState());
                     for(SingleMove jump : steps){
                         if (square.getKilled() == jump.getKilled()) {
                             contained = true;
@@ -67,14 +68,41 @@ public class EnglishManState implements State{
             }
         }
         result.clear();
+        //pozbycie duplikatów
         for (List<SingleMove> squares : endResult) {
             if(result.isEmpty())result.add(squares);
-            else if(result.get(0).get(0).getKilled()==null&&squares.get(0).getKilled()!=null){
-                result.clear();
-                result.add(squares);
+            else if(squares.get(0).getKilled()!=null){
+                if(result.get(0).get(0).getKilled()==null){
+                    result.clear();
+                    result.add(squares);
+                }
+                else result.add(squares);
+            }
+            else if(result.get(0).get(0).getKilled()==null)result.add(squares);
+        }
+        endResult.clear();
+        for (List<SingleMove> singleMoves : result) {
+            if (endResult.isEmpty()) endResult.add(singleMoves);
+            else {
+                for (List<SingleMove> moves : endResult) {
+                    contained=true;
+                    if (singleMoves.size() > moves.size()) {
+                        for (int j = 0; j < moves.size(); j++) {
+                            if(!Objects.equals(singleMoves.get(j).getAsString(), moves.get(j).getAsString())){
+                                contained=false;
+                            }
+                        }
+                    }
+                    if(contained){
+                        endResult.remove(moves);
+                        endResult.add(singleMoves);
+
+                    }
+                }
+
             }
         }
-        return result;
+        return endResult;
     }
 
 

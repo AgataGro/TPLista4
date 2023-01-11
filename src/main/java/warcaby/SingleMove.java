@@ -21,4 +21,11 @@ public class SingleMove {
     public Square getKilled() {
         return killed;
     }
+    public String getAsString(){
+        String a="";
+        a+=start;
+        a+=end;
+        a+=killed;
+        return a;
+    }
 }

@@ -71,15 +71,17 @@ class TurkishManStateTest {
     void moveSequence() {
         Square[][] tiles = variousKillingSetup();
         Piece piece = tiles[2][2].getPiece();
-        List<List<Square>> output = piece.moveSequences(tiles);
-        List<List<Square>> result=new ArrayList<>();
-        List<Square> current=new ArrayList<>();
-        current.add(tiles[2][4]);
-        current.add(tiles[4][4]);
-        current.add(tiles[6][4]);
+        List<List<SingleMove>> output = piece.moveSequences(tiles);
+        List<List<SingleMove>> result=new ArrayList<>();
+        List<SingleMove> current=new ArrayList<>();
+        current.add(new SingleMove(tiles[2][2],tiles[2][4],tiles[2][3]));
+        current.add(new SingleMove(tiles[2][4],tiles[4][4],tiles[3][4]));
+        current.add(new SingleMove(tiles[4][4],tiles[6][4],tiles[5][4]));
         result.add(current);
         assertEquals(output.size(), result.size());
-        assertTrue(output.containsAll(result));
+        assertEquals(output.get(0).get(0).getAsString(), result.get(0).get(0).getAsString());
+        assertEquals(output.get(0).get(1).getAsString(), result.get(0).get(1).getAsString());
+        assertEquals(output.get(0).get(2).getAsString(), result.get(0).get(2).getAsString());
 
     }
 
