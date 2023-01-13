@@ -100,7 +100,7 @@ public class TurkishManState implements State{
                 }
             }
             case Down -> {
-                if(y-1<=7){
+                if(y+1<=7){
                     if(moveDirection==1) {
                         Piece p = tiles[x][y + 1].getPiece();
                         if (p == null) {
