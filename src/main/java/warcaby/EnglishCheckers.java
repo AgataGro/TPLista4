@@ -77,6 +77,12 @@ public class EnglishCheckers extends Application implements Checkers{
         return (int)x/70;
     }
 
+    /**
+     * @param piece a piece whose move legality we want to check
+     * @param x a coordinate of the left top corner of a square where we want to place the piece
+     * @param y a coordinate of the left top corner of a square where we want to place the piece
+     * @return true if we can move or false in opposite case
+     */
     private boolean checkMove(Piece piece, int x, int y) {
         List<Square> availableMoves = piece.getAvailibleMoves(tiles);
         if(availableMoves.contains(tiles[x][y]))
@@ -85,6 +91,16 @@ public class EnglishCheckers extends Application implements Checkers{
             return false;
     }
 
+    /**
+     * in this method a new piece is created with requested features
+     * and some actions are set to this piece
+     * @param x a x coordinate of the middle of the piece
+     * @param y a y coordinate of the middle of the piece
+     * @param r a value of piece radius
+     * @param color a color of a piece
+     * @param state a state of a piece
+     * @return created piece
+     */
     private Piece createPiece(int x, int y, int r, Color color, State state) {
         Piece piece = new EnglishPiece(x,y,r,color,state);
 
