@@ -88,11 +88,10 @@ public class PolishCheckers extends Application implements Checkers {
     }
 
     /**
-     * metoda sprawdzająca, jaki rodzaj ruchu wykonaliśmy
-     * @param piece pionek, który ruszyliśmy
-     * @param x współrzędna x lewego górnego rogu kwadratu, na którym upuściliśmy pionek
-     * @param y współrzędna y lewego górnego rogu kwadratu, na którym upuściliśmy pionek
-     * @return typ ruchu, który wykonaliśmy i pionek, który zbilliśmy albo null, jeżeli nie zbiliśmy żadnego
+     * @param piece a piece whose move legality we want to check
+     * @param x a coordinate of the left top corner of a square where we want to place the piece
+     * @param y a coordinate of the left top corner of a square where we want to place the piece
+     * @return true if we can move or false in opposite case
      */
     private boolean checkMove(Piece piece, int x, int y) {
         List<Square> availableMoves = piece.getAvailibleMoves(tiles);
@@ -103,12 +102,14 @@ public class PolishCheckers extends Application implements Checkers {
     }
 
     /**
-     * metoda tworząca pionek i dodająca pewne funkcjonalności
-     * @param x współrzędna x środka koła
-     * @param y współrzędna x środka koła
-     * @param r długość promienia koła
-     * @param color kolor wypełnienia koła
-     * @return utworzony pionek
+     * in this method a new piece is created with requested features
+     * and some actions are set to this piece
+     * @param x a x coordinate of the middle of the piece
+     * @param y a y coordinate of the middle of the piece
+     * @param r a value of piece radius
+     * @param color a color of a piece
+     * @param state a state of a piece
+     * @return created piece
      */
     private Piece createPiece(int x, int y, int r, Color color, State state) {
         Piece piece = new PolishPiece(x,y,r,color,state);
@@ -152,10 +153,6 @@ public class PolishCheckers extends Application implements Checkers {
                 }
         });
 
-        /*
-         * to metoda do dopracowania, po kliknięciu na pionek mają podświatlać się
-         * możliwe drogi zbicia
-         */
         piece.setOnMouseClicked(e -> {
             List<Square> availibleMoves = piece.getAvailibleMoves(tiles);
             Square temp;
@@ -167,10 +164,6 @@ public class PolishCheckers extends Application implements Checkers {
             }
         });
 
-        /*
-         * to metoda do dopracowania; kiedy myszka zjedzie z pionka pola, które
-         * wcześniej się podświetliły na klliknięcie, mają wrócić do niepodświetlonego stanu
-         */
         piece.setOnMouseExited(e -> {
             List<Square> availibleMoves = piece.getAvailibleMoves(tiles);
             Square temp;
