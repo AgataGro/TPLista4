@@ -124,12 +124,12 @@ public class TurkishManState implements State{
                 }
             }
             case Right -> {
-                if(x+1<=9){
+                if(x+1<=7){
                     Piece p = tiles[x+1][y].getPiece();
                     if(p==null){
                         result.add(new SingleMove(tiles[x][y],tiles[x+1][y],null));
                     }
-                    else if(piece.getColor()!=p.getColor()&&x+2<=9){
+                    else if(piece.getColor()!=p.getColor()&&x+2<=7){
                         if(tiles[x+2][y].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x+2][y],tiles[x+1][y]));
                     }
                 }
