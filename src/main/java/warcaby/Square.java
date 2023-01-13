@@ -7,11 +7,21 @@ public class Square extends Rectangle {
     
     private Piece piece = null;
 
+    /**
+     * @param x a x coordinate of the left top corner of a square
+     * @param y a y coordinate of the left top corner of a square
+     * @param w width of a square
+     * @param h height of a square
+     * @param color color of a square - can be brown or wheat
+     */
     public Square(int x, int y, int w, int h, Color color) {
         super(x,y,w,h);
         setFill(color);
     }
 
+    /**
+     * @return true if a square is holding the square or false in opposite case
+     */
     public boolean hasPiece() {
         if(piece==null)
             return false;
@@ -19,10 +29,16 @@ public class Square extends Rectangle {
             return true;
     }
 
+    /**
+     * @return piece which belongs to the square
+     */
     public Piece getPiece() {
         return this.piece;
     }
 
+    /**
+     * @param piece a piece to set on this square
+     */
     public void setPiece(Piece piece) {
         this.piece = piece;
     }
