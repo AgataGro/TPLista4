@@ -3,6 +3,14 @@ package warcaby;
 import javafx.scene.paint.Color;
 
 public class TurkishPiece extends Piece{
+    
+    /**
+     * @param x one of the coordinates of the middle of the circle
+     * @param y one of the coordinates of the middle of the circle
+     * @param r the value of circle radius
+     * @param color color of a piece - can be black or white
+     * @param state state of a piece - piece can become a king
+     */
     TurkishPiece(int x, int y, int r, Color color, State state) {
         super(x,y,r);
         setFill(color);
