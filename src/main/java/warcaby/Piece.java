@@ -71,10 +71,39 @@ public abstract class Piece extends Circle {
     public List<Square> getAvailibleMoves(Square[][] board) {
         List<SingleMove> moves=state.availibleMoves(this, board);
         List<Square> result=new ArrayList<>();
+        boolean killed=false;
         for (SingleMove move : moves) {
-            result.add(move.getEnd());
+            if(!killed) {
+                if(move.getKilled()!=null){
+                    result.clear();
+                    result.add(move.getEnd());
+                }
+                else result.add(move.getEnd());
+            } else {
+                if(move.getKilled()!=null){
+                    result.add(move.getEnd());
+                }
+            }
         }
-
+        return result;
+    }
+    public List<SingleMove> getSingleMoves(Square[][] board){
+        List<SingleMove> moves=state.availibleMoves(this, board);
+        List<SingleMove> result=new ArrayList<>();
+        boolean killed=false;
+        for (SingleMove move : moves) {
+            if(!killed) {
+                if(move.getKilled()!=null){
+                    result.clear();
+                    result.add(move);
+                }
+                else result.add(move);
+            } else {
+                if(move.getKilled()!=null){
+                    result.add(move);
+                }
+            }
+        }
         return result;
     }
     
@@ -82,7 +111,11 @@ public abstract class Piece extends Circle {
      * @param board table with all the squares of the board we are using to play checkers
      * @return sequence of moves we can do with the piece
      */
-    public List<List<SingleMove>> moveSequences(Square[][] board){return  state.moveSequence(this, board, new ArrayList<>());}
+    public List<List<SingleMove>> moveSequences(Square[][] board){
+        List<List<SingleMove>> result;
+        result = state.moveSequence(this, board, new ArrayList<>());
+        return result;
+    }
     
     /**
      * method to call when a piece should change its state

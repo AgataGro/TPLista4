@@ -3,9 +3,10 @@ package warcaby;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 
-public class Square extends Rectangle {
+public class Square extends Rectangle implements Cloneable{
     
     private Piece piece = null;
+    boolean isKilled=false;
 
     /**
      * @param x a x coordinate of the left top corner of a square
@@ -17,6 +18,10 @@ public class Square extends Rectangle {
     public Square(int x, int y, int w, int h, Color color) {
         super(x,y,w,h);
         setFill(color);
+    }
+
+    public void setKilled(boolean killed) {
+        isKilled = killed;
     }
 
     /**
@@ -42,4 +47,11 @@ public class Square extends Rectangle {
     public void setPiece(Piece piece) {
         this.piece = piece;
     }
+    public Color getColor(){return (Color) getFill();}
+
+    @Override
+    public Square clone() throws CloneNotSupportedException{
+        return (Square) super.clone();
+    }
+
 }
