@@ -103,6 +103,7 @@ public class EnglishCheckers extends Application {
     }
 
     /**
+     * This function checks if a move is legal
      * @param piece a piece whose move legality we want to check
      * @param x a coordinate of the left top corner of a square where we want to place the piece
      * @param y a coordinate of the left top corner of a square where we want to place the piece
@@ -238,6 +239,9 @@ public class EnglishCheckers extends Application {
         return piece;
     }
 
+    /**
+    *@param args array with given arguments
+    */
     public static void main(String[] args) {
         launch(args);
     }
