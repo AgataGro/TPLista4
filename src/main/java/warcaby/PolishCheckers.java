@@ -91,11 +91,6 @@ public class PolishCheckers extends Application {
         stage.show();
     }
 
-    /**
-     * metoda, która wylicza, w którym kwadracie znajduje się podana liczba
-     * @param x współrzędna punktu z planszy
-     * @return numer kwadratu, w którym znajduje się podana liczba
-     */
     private int getScenePlace(double x) {
         return (int)x/70;
     }
@@ -135,11 +130,6 @@ public class PolishCheckers extends Application {
     private Piece createPiece(int x, int y, int r, Color color, State state) {
         Piece piece = new PolishPiece(x,y,r,color,state);
 
-        /*
-         * metoda aktywowana, kiedy puszczamy pionek
-         * ona odpowiada za umieszczenie pionka w odpowiednim miejscu
-         * zgodnie z wykonanym przez gracza ruchem
-         */
         piece.setOnMouseReleased(e -> {
             int newX = getScenePlace(e.getSceneX());
             int newY = getScenePlace(e.getSceneY());
@@ -211,7 +201,16 @@ public class PolishCheckers extends Application {
                             }
                         }
                     }
-
+                if(mediator.getWhiteNum()==0) {
+                    System.out.println("Black wins!");
+                    classStage.hide();
+                    return;
+                }
+                else if(mediator.getBlackNum()==0) {
+                    System.out.println("White wins!");
+                    classStage.hide();
+                    return;
+                }
             }
 
         });
