@@ -2,10 +2,14 @@ package warcaby;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Klasa, która określa zachowanie damki w polskich warcabach
+ */
 public class PolishKingState implements State{
 
-
+    /**
+     * @see State
+     */
     @Override
     public List<SingleMove> availibleMoves(Piece piece, Square[][] board) {
         List<SingleMove> result= new ArrayList<>();
@@ -15,7 +19,11 @@ public class PolishKingState implements State{
         }
         return result;
     }
-
+    /**
+     * @see State
+     * Funkcja uniemożliwia ponowne zbicie pionka
+     * Zbija maksymalną liczbę pionków
+     */
     @Override
     public List<List<SingleMove>> moveSequence(Piece piece, Square[][] board, List<SingleMove> steps) {
         List<SingleMove> current, list;
@@ -75,11 +83,19 @@ public class PolishKingState implements State{
         return result;
     }
 
+    /**
+     *
+     * @return zwraca samą siebie
+     */
     @Override
     public State changeState() {
         return this;
     }
-
+    /**
+     * W zależności od kierunku sprawdzane są możliwości ruchu
+     * Pionek porusza się po skosie o dowolną ilość pól
+     * @see State
+     */
     @Override
     public List<SingleMove> move(Piece piece, Square[][] tiles, Direction direction) {
         List<SingleMove> result=new ArrayList<>();

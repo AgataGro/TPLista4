@@ -3,16 +3,28 @@ package warcaby;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Klasa, która określa zachowanie zwykłego pionka w polskich warcabach
+ */
 public class PolishManState implements State{
+    /**
+     * @see State
+     */
     @Override
     public List<SingleMove> availibleMoves(Piece piece, Square[][] board) {
         List<SingleMove> result= new ArrayList<>();
-
+        //przejście po wszystkich kierunkach
         for (Direction direction : Direction.values()) {
             result.addAll(move(piece, board, direction));
         }
         return result;
     }
+
+    /**
+     * @see State
+     * Funkcja uniemożliwia ponowne zbicie pionka
+     * Zbija maksymalną liczbę pionków
+     */
     @Override
     public List<List<SingleMove>> moveSequence(Piece piece, Square[][] board, List<SingleMove> steps) {
         //Inicjalizacja zmiennych
@@ -72,10 +84,22 @@ public class PolishManState implements State{
         }
         return result;
     }
+
+    /**
+     *
+     * @return zwraca stan PolishKingState
+     */
     @Override
     public State changeState() {
         return new PolishKingState();
     }
+
+    /**
+     * W zależności od kierunku sprawdzane są możliwości ruchu
+     * Pionek porusza się po skosie o 1 pole
+     * Pionek bije do przodu i do tyłu
+     * @see State
+     */
     @Override
     public List<SingleMove> move(Piece piece, Square[][] tiles, Direction direction){
         List<SingleMove> result=new ArrayList<>();

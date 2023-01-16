@@ -5,8 +5,13 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
+/**
+ * Klasa, która określa zachowanie damki w angielskich warcabach
+ */
 public class EnglishKingState implements State{
+    /**
+     * @see State
+     */
     @Override
     public List<SingleMove> availibleMoves(Piece piece, Square[][] board) {
         List<SingleMove> result= new ArrayList<>();
@@ -16,6 +21,11 @@ public class EnglishKingState implements State{
         }
         return result;
     }
+    /**
+     * @see State
+     * Funkcja uniemożliwia ponowne zbicie pionka
+     * O ile ma możliwość zbija pionki
+     */
 
     @Override
     public List<List<SingleMove>> moveSequence(Piece piece, Square[][] board, List<SingleMove> steps) {
@@ -99,12 +109,19 @@ public class EnglishKingState implements State{
         return result;
     }
 
-
+    /**
+     *
+     * @return zwraca siebie
+     */
     @Override
     public State changeState() {
         return this;
     }
-
+    /**
+     * W zależności od kierunku sprawdzane są możliwości ruchu
+     * Pionek porusza się po skosie o 1 pole
+     * @see State
+     */
     @Override
     public List<SingleMove> move(Piece piece, Square[][] tiles, Direction direction) {
         List<SingleMove> result=new ArrayList<>();

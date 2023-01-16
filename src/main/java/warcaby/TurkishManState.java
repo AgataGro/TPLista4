@@ -4,8 +4,13 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Klasa, która określa zachowanie zwykłego pionka w tureckich warcabach
+ */
 public class TurkishManState implements State{
+    /**
+     * @see State
+     */
     @Override
     public List<SingleMove> availibleMoves(Piece piece, Square[][] board) {
         List<SingleMove> result= new ArrayList<>();
@@ -15,7 +20,11 @@ public class TurkishManState implements State{
         }
         return result;
     }
-
+    /**
+     * @see State
+     * Funkcja uniemożliwia ponowne zbicie pionka
+     * Zbija maksymalną liczbę pionków
+     */
     @Override
     public List<List<SingleMove>> moveSequence(Piece piece, Square[][] board, List<SingleMove> steps) {
         //Inicjalizacja zmiennych
@@ -73,12 +82,20 @@ public class TurkishManState implements State{
         return result;
     }
 
-
+    /**
+     *
+     * @return zwraca TurkishKingState
+     */
     @Override
     public State changeState() {
         return new TurkishKingState();
     }
-
+    /**
+     * W zależności od kierunku sprawdzane są możliwości ruchu
+     * Pionek porusza się po prostej o 1 pole
+     * Pionek bije do przodu i do tyłu
+     * @see State
+     */
     @Override
     public List<SingleMove> move(Piece piece, Square[][] tiles, Direction direction) {
         List<SingleMove> result=new ArrayList<>();
