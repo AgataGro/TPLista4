@@ -203,11 +203,15 @@ public class PolishCheckers extends Application {
                     }
                 if(mediator.getWhiteNum()==0) {
                     System.out.println("Black wins!");
+                    BlackWin win = new BlackWin();
+                    win.start(BlackWin.classStage);
                     classStage.hide();
                     return;
                 }
                 else if(mediator.getBlackNum()==0) {
                     System.out.println("White wins!");
+                    WhiteWin win = new WhiteWin();
+                    win.start(WhiteWin.classStage);
                     classStage.hide();
                     return;
                 }
