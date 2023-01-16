@@ -87,6 +87,11 @@ public abstract class Piece extends Circle {
         }
         return result;
     }
+    
+    /**
+     * @param board array of squares
+     * @return list with al squares where a piece can move
+     */
     public List<SingleMove> getSingleMoves(Square[][] board){
         List<SingleMove> moves=state.availibleMoves(this, board);
         List<SingleMove> result=new ArrayList<>();
@@ -108,7 +113,7 @@ public abstract class Piece extends Circle {
     }
     
     /**
-     * @param board table with all the squares of the board we are using to play checkers
+     * @param board table with squares from the board
      * @return sequence of moves we can do with the piece
      */
     public List<List<SingleMove>> moveSequences(Square[][] board){
