@@ -203,6 +203,16 @@ public class EnglishCheckers extends Application {
                     }
                 }
             }
+            if(mediator.getWhiteNum()==0) {
+                System.out.println("Black wins!");
+                classStage.hide();
+                return;
+            }
+            else if(mediator.getBlackNum()==0) {
+                System.out.println("White wins!");
+                classStage.hide();
+                return;
+            }
         });
 
         piece.setOnMouseClicked(e -> {
