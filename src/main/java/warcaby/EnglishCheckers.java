@@ -125,12 +125,7 @@ public class EnglishCheckers extends Application {
      */
     private Piece createPiece(int x, int y, int r, Color color, State state) {
         EnglishPiece piece = new EnglishPiece(x,y,r,color,state);
-
-        /*
-         * metoda aktywowana, kiedy puszczamy pionek
-         * ona odpowiada za umieszczenie pionka w odpowiednim miejscu
-         * zgodnie z wykonanym przez gracza ruchem
-         */
+        
         piece.setOnMouseReleased(e -> {
             int newX = getScenePlace(e.getSceneX());
             int newY = getScenePlace(e.getSceneY());
