@@ -35,9 +35,11 @@ public class PolishKingState implements State{
         boolean contained;
         if(current.size()>0){
             for (SingleMove square : current) {
+
                 contained=false;
                 list = new ArrayList<>(steps);
                 if (square.getKilled()!=null) {
+                    square.setKilledPiece(board[(int) (square.getKilled().getX() / 70)][(int) (square.getKilled().getY() / 70)].getPiece());
                     list.add(square);
                     Piece p = new PolishPiece((int) square.getEnd().getX()+35,(int) square.getEnd().getY()+35,30, piece.getColor(), new PolishKingState());
                     for(SingleMove jump : steps){

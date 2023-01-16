@@ -78,7 +78,6 @@ class EnglishManStateTest {
         piece=tiles[6][3].getPiece();
         actual = new ArrayList<>();
         actual.add(tiles[4][1]);
-        actual.add(tiles[7][2]);
         assertEquals(piece.getAvailibleMoves(tiles).size(), actual.size());
         assertTrue(piece.getAvailibleMoves(tiles).containsAll(actual));
 

@@ -17,8 +17,6 @@ class EnglishKingStateTest {
         List<Square> actual = new ArrayList<>();
         actual.add(tiles[2][5]);
         actual.add(tiles[6][1]);
-        actual.add(tiles[3][2]);
-        actual.add(tiles[5][4]);
         assertEquals(piece.getAvailibleMoves(tiles).size(), actual.size());
         assertTrue(piece.getAvailibleMoves(tiles).containsAll(actual));
 

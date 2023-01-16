@@ -14,17 +14,7 @@ class TurkishKingStateTest {
     void availibleMoves() {
         Square[][] tiles = KillingSetup();
         Piece piece = tiles[3][5].getPiece();
-        List<Square> actual = new ArrayList<>();
-        actual.add(tiles[3][4]);
-        actual.add(tiles[3][3]);
-        actual.add(tiles[3][2]);
-        actual.add(tiles[3][1]);
-        actual.add(tiles[3][0]);
-        actual.add(tiles[3][6]);
-        actual.add(tiles[3][7]);
-        actual.add(tiles[2][5]);
-        actual.add(tiles[1][5]);
-        actual.add(tiles[0][5]);
+        List<Square> actual = new ArrayList<>();;
         actual.add(tiles[5][5]);
         assertEquals(piece.getAvailibleMoves(tiles).size(), actual.size());
         assertTrue(piece.getAvailibleMoves(tiles).containsAll(actual));

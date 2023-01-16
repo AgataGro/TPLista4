@@ -60,7 +60,6 @@ class PolishManStateTest {
         piece=tiles[3][2].getPiece();
         actual = new ArrayList<>();
         actual.add(tiles[1][0]);
-        actual.add(tiles[2][3]);
         assertEquals(piece.getAvailibleMoves(tiles).size(), actual.size());
         assertTrue(piece.getAvailibleMoves(tiles).containsAll(actual));
 
@@ -80,7 +79,6 @@ class PolishManStateTest {
         piece=tiles[6][3].getPiece();
         actual = new ArrayList<>();
         actual.add(tiles[4][1]);
-        actual.add(tiles[7][2]);
         actual.add(tiles[4][5]);
         assertEquals(piece.getAvailibleMoves(tiles).size(), actual.size());
         assertTrue(piece.getAvailibleMoves(tiles).containsAll(actual));
@@ -94,8 +92,6 @@ class PolishManStateTest {
         piece=tiles[5][4].getPiece();
         actual = new ArrayList<>();
         actual.add(tiles[7][2]);
-        actual.add(tiles[4][5]);
-        actual.add(tiles[6][5]);
         assertEquals(piece.getAvailibleMoves(tiles).size(), actual.size());
         assertTrue(piece.getAvailibleMoves(tiles).containsAll(actual));
 

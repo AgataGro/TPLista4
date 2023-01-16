@@ -45,8 +45,6 @@ class TurkishManStateTest {
 
         piece=tiles[2][2].getPiece();
         actual.clear();
-        actual.add(tiles[1][2]);
-        actual.add(tiles[3][2]);
         actual.add(tiles[2][4]);
         assertEquals(piece.getAvailibleMoves(tiles).size(), actual.size());
         assertTrue(piece.getAvailibleMoves(tiles).containsAll(actual));

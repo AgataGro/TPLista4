@@ -15,13 +15,6 @@ class PolishKingStateTest {
         Square[][] tiles = simpleSetup();
         Piece piece = tiles[6][7].getPiece();
         List<Square> actual = new ArrayList<>();
-        actual.add(tiles[7][8]);
-        actual.add(tiles[8][9]);
-        actual.add(tiles[5][8]);
-        actual.add(tiles[4][9]);
-        actual.add(tiles[7][6]);
-        actual.add(tiles[8][5]);
-        actual.add(tiles[9][4]);
         actual.add(tiles[4][5]);
         actual.add(tiles[3][4]);
         actual.add(tiles[2][3]);
@@ -104,6 +97,7 @@ class PolishKingStateTest {
             }
             s1.add(ss1);
             s2.add(ss2);
+
         }
         assertTrue(s1.containsAll(s2));
     }

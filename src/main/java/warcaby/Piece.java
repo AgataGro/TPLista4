@@ -77,6 +77,7 @@ public abstract class Piece extends Circle {
                 if(move.getKilled()!=null){
                     result.clear();
                     result.add(move.getEnd());
+                    killed=true;
                 }
                 else result.add(move.getEnd());
             } else {
@@ -109,6 +110,7 @@ public abstract class Piece extends Circle {
                 }
             }
         }
+        board[getOldX()/70][getOldY()/70].setPiece(this);
         return result;
     }
     
@@ -119,6 +121,14 @@ public abstract class Piece extends Circle {
     public List<List<SingleMove>> moveSequences(Square[][] board){
         List<List<SingleMove>> result;
         result = state.moveSequence(this, board, new ArrayList<>());
+        board[getOldX()/70][getOldY()/70].setPiece(this);
+        for (List<SingleMove> singleMoves : result) {
+            for (SingleMove singleMove : singleMoves) {
+                if(singleMove.getKilled()!=null) {
+                    singleMove.getKilled().setPiece(singleMove.getKilledPiece());
+                }
+            }
+        }
         return result;
     }
     

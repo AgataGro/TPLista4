@@ -4,6 +4,7 @@ public class SingleMove {
     Square start;
     Square end;
     Square killed;
+    Piece killedPiece=null;
     
     /**
      * @param start a square where the move started
@@ -46,5 +47,13 @@ public class SingleMove {
         a+=end;
         a+=killed;
         return a;
+    }
+
+    public Piece getKilledPiece() {
+        return killedPiece;
+    }
+
+    public void setKilledPiece(Piece killedPiece) {
+        this.killedPiece = killedPiece;
     }
 }

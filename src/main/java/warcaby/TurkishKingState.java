@@ -50,6 +50,7 @@ public class TurkishKingState implements State{
                 }
                 list = new ArrayList<>(steps);
                 if (square.getKilled()!=null) {
+                    square.setKilledPiece(board[(int) (square.getKilled().getX() / 70)][(int) (square.getKilled().getY() / 70)].getPiece());
                     if(!steps.isEmpty()) {
                         x = (int) (steps.get(steps.size() - 1).getEnd().getX() / 70 - steps.get(steps.size() - 1).getStart().getX() / 70);
                         y = (int) (steps.get(steps.size() - 1).getEnd().getY() / 70 - steps.get(steps.size() - 1).getStart().getY() / 70);

@@ -36,8 +36,10 @@ public class TurkishManState implements State{
         //zmienna do sprawdzenia czy przeskoczyliśmy nad danym pionkiem
         if(current.size()>0){
             for (SingleMove square : current) {
+
                 list = new ArrayList<>(steps);
                 if (square.getKilled()!=null) {
+                    square.setKilledPiece(board[(int) (square.getKilled().getX() / 70)][(int) (square.getKilled().getY() / 70)].getPiece());
                     list.add(square);
                     Piece p = new TurkishPiece((int) square.getEnd().getX()+35,(int) square.getEnd().getY()+35,30, piece.getColor(), new TurkishManState());
                     board[(int) (square.getKilled().getX()/70)][(int) (square.getKilled().getY()/70)].setPiece(null);
