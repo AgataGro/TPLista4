@@ -243,6 +243,9 @@ public class PolishCheckers extends Application {
         return piece;
     }
 
+    /**
+    *@param args array with given arguments
+    */
     public static void main(String[] args) {
         launch(args);
     }
