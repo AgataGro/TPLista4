@@ -103,6 +103,7 @@ public class EnglishCheckers extends Application {
     }
 
     /**
+     * This function checks if a move is legal
      * @param piece a piece whose move legality we want to check
      * @param x a coordinate of the left top corner of a square where we want to place the piece
      * @param y a coordinate of the left top corner of a square where we want to place the piece
@@ -125,12 +126,7 @@ public class EnglishCheckers extends Application {
      */
     private Piece createPiece(int x, int y, int r, Color color, State state) {
         EnglishPiece piece = new EnglishPiece(x,y,r,color,state);
-
-        /*
-         * metoda aktywowana, kiedy puszczamy pionek
-         * ona odpowiada za umieszczenie pionka w odpowiednim miejscu
-         * zgodnie z wykonanym przez gracza ruchem
-         */
+        
         piece.setOnMouseReleased(e -> {
             int newX = getScenePlace(e.getSceneX());
             int newY = getScenePlace(e.getSceneY());
@@ -203,6 +199,16 @@ public class EnglishCheckers extends Application {
                     }
                 }
             }
+            if(mediator.getWhiteNum()==0) {
+                System.out.println("Black wins!");
+                classStage.hide();
+                return;
+            }
+            else if(mediator.getBlackNum()==0) {
+                System.out.println("White wins!");
+                classStage.hide();
+                return;
+            }
         });
 
         piece.setOnMouseClicked(e -> {
@@ -233,6 +239,9 @@ public class EnglishCheckers extends Application {
         return piece;
     }
 
+    /**
+    *@param args array with given arguments
+    */
     public static void main(String[] args) {
         launch(args);
     }

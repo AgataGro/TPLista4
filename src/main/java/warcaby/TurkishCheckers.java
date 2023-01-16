@@ -114,11 +114,6 @@ public class TurkishCheckers extends Application {
     private Piece createPiece(int x, int y, int r, Color color, State state) {
         TurkishPiece piece = new TurkishPiece(x,y,r,color,state);
 
-        /*
-         * metoda aktywowana, kiedy puszczamy pionek
-         * ona odpowiada za umieszczenie pionka w odpowiednim miejscu
-         * zgodnie z wykonanym przez gracza ruchem
-         */
         piece.setOnMouseReleased(e -> {
             int newX = getScenePlace(e.getSceneX());
             int newY = getScenePlace(e.getSceneY());
@@ -191,6 +186,16 @@ public class TurkishCheckers extends Application {
                     }
                 }
             }
+            if(mediator.getWhiteNum()==0) {
+                System.out.println("Black wins!");
+                classStage.hide();
+                return;
+            }
+            else if(mediator.getBlackNum()==0) {
+                System.out.println("White wins!");
+                classStage.hide();
+                return;
+            }
         });
 
         piece.setOnMouseClicked(e -> {
@@ -221,6 +226,9 @@ public class TurkishCheckers extends Application {
         return piece;
     }
 
+    /**
+    *@param args array with given arguments
+    */
     public static void main(String[] args) {
         launch(args);
     }

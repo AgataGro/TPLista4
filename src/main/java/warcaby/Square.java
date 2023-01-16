@@ -20,6 +20,9 @@ public class Square extends Rectangle implements Cloneable{
         setFill(color);
     }
 
+    /**
+     * @param killed true if we killed the piece from this square, false otherwise
+     */
     public void setKilled(boolean killed) {
         isKilled = killed;
     }
@@ -47,6 +50,10 @@ public class Square extends Rectangle implements Cloneable{
     public void setPiece(Piece piece) {
         this.piece = piece;
     }
+    
+    /**
+     * @return color of this square
+     */
     public Color getColor(){return (Color) getFill();}
 
     @Override
