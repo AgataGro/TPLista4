@@ -3,18 +3,19 @@ package warcaby;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mediator {
+public class PieceManager {
     List<Piece> white=new ArrayList<>();
     List<Piece> black=new ArrayList<>();
     boolean isWhiteTurn;
     boolean hasKillOption;
     Piece movedPiece =null;
     List<Square> killed=new ArrayList<>();
+    List<List<SingleMove>> availibleMoves=new ArrayList<>();
     
     /**
      * @param isWhiteTurn is true if white piece should move, false otherwise
      */
-    Mediator(boolean isWhiteTurn){
+    PieceManager(boolean isWhiteTurn){
         this.isWhiteTurn=isWhiteTurn;
     }
     
@@ -26,6 +27,7 @@ public class Mediator {
         movedPiece=null;
         killed.clear();
         hasKillOption(board);
+        calculateAvailibleMoves(board);
     }
     
     /**
@@ -40,6 +42,51 @@ public class Mediator {
      */
     public boolean hasKilled(){
         return !killed.isEmpty();
+    }
+    public List<SingleMove> pickMove(int startX, int startY, int endX, int endY){
+        List<SingleMove> result=new ArrayList<>();
+        Square start, end;
+        for (List<SingleMove> availibleMove : availibleMoves) {
+            if (!availibleMove.isEmpty()) {
+                start = availibleMove.get(0).getStart();
+                end = availibleMove.get(0).getEnd();
+                if (start.getX() / 70 == startX && start.getY() / 70 == startY && end.getX() / 70 == endX && end.getY() / 70 == endY)
+                    result = availibleMove;
+            }
+        }
+        return result;
+    }
+    public void calculateAvailibleMoves(Square[][] board){
+        List<List<SingleMove>> temp = new ArrayList<>();
+        if (isWhiteTurn) {
+            for (Piece piece : white) {
+                temp.addAll(piece.moveSequences(board));
+            }
+        } else{
+            for (Piece piece : black) {
+                temp.addAll(piece.moveSequences(board));
+            }
+        }
+
+        availibleMoves.clear();
+        for (List<SingleMove> singleMoves : temp) {
+            if(!singleMoves.isEmpty()) {
+                System.out.println(singleMoves.get(0).getAsString());
+                if (hasKillOption) {
+                    if (singleMoves.get(0).getKilled() != null) {
+                        System.out.println(singleMoves.get(0).getAsString());
+                        if (availibleMoves.isEmpty()) availibleMoves.add(singleMoves);
+                        else if (singleMoves.size() > availibleMoves.get(0).size()) {
+                            availibleMoves.clear();
+                            availibleMoves.add(singleMoves);
+                        } else if (singleMoves.size() == availibleMoves.get(0).size()) availibleMoves.add(singleMoves);
+                    }
+                } else {
+                    availibleMoves.add(singleMoves);
+                }
+            }
+        }
+        // System.out.println(availibleMoves);
     }
 
     /**
@@ -196,10 +243,8 @@ public class Mediator {
             }
             if (!temp.isEmpty()) {
                 for (SingleMove singleMove : temp) {
-                    System.out.println(singleMove.getAsString());
                     if (singleMove.getKilled() != null&& !killed.contains(singleMove.getKilled())){
                         result.add(singleMove.getEnd());
-                        System.out.println(singleMove.getAsString());
                     }
                 }
             }
