@@ -140,17 +140,24 @@ public class TurkishCheckers extends Application {
                         if(mediator.getKilled(tiles[startX][startY], tiles[newX][newY], tiles)!=null) {
                             killed.add(mediator.getKilled(tiles[startX][startY], tiles[newX][newY], tiles));
                             mediator.addKilled(mediator.getKilled(tiles[startX][startY], tiles[newX][newY], tiles));
+                            mediator.addToRecord(new SingleMove(tiles[startX][startY],tiles[newX][newY],killed.get(killed.size()-1)));
                         }
+                        else mediator.addToRecord(new SingleMove(tiles[startX][startY],tiles[newX][newY],null));
                         piece.move(newX,newY);
                         tiles[startX][startY].setPiece(null);
                         tiles[newX][newY].setPiece(piece);
                         if(!mediator.hasKilled()){
                             mediator.changeTurn(tiles);
-                            System.out.println("endTurn, not killed");
+                            if(bot){
+                                List<Piece> toKill = mediator.pickRandomMove();
+                                for (Piece value : toKill) {
+                                    piecesGroup.getChildren().remove(value);
+                                }
+                                mediator.changeTurn(tiles);
+                            }
                         }
                         else {
                             if (!mediator.continueTurn(piece,tiles)) {
-                                System.out.println("endTurn, not moves");
                                 Piece killedPiece;
                                 for (Square square : killed) {
                                     if (square != null) {
@@ -162,6 +169,13 @@ public class TurkishCheckers extends Application {
                                 }
                                 mediator.changeTurn(tiles);
                                 killed.clear();
+                                if(bot){
+                                    List<Piece> toKill = mediator.pickRandomMove();
+                                    for (Piece value : toKill) {
+                                        piecesGroup.getChildren().remove(value);
+                                    }
+                                    mediator.changeTurn(tiles);
+                                }
                             }
                         }
                     }
@@ -169,16 +183,23 @@ public class TurkishCheckers extends Application {
                         if(mediator.getKilled(tiles[startX][startY], tiles[newX][newY], tiles)!=null) {
                             killed.add(mediator.getKilled(tiles[startX][startY], tiles[newX][newY], tiles));
                             mediator.addKilled(mediator.getKilled(tiles[startX][startY], tiles[newX][newY], tiles));
-                        }                        piece.move(newX,newY);
+                            mediator.addToRecord(new SingleMove(tiles[startX][startY],tiles[newX][newY],killed.get(killed.size()-1)));
+                        }
+                        piece.move(newX,newY);
                         tiles[startX][startY].setPiece(null);
                         tiles[newX][newY].setPiece(piece);
                         if(!mediator.hasKilled()){
                             mediator.changeTurn(tiles);
-                            System.out.println("endTurn, not killed");
+                            if(bot){
+                                List<Piece> toKill = mediator.pickRandomMove();
+                                for (Piece value : toKill) {
+                                    piecesGroup.getChildren().remove(value);
+                                }
+                                mediator.changeTurn(tiles);
+                            }
                         }
                         else {
                             if (!mediator.continueTurn(piece,tiles)) {
-                                System.out.println("endTurn, not moves");
                                 Piece killedPiece;
                                 for (Square square : killed) {
                                     if (square != null) {
@@ -190,6 +211,13 @@ public class TurkishCheckers extends Application {
                                 }
                                 mediator.changeTurn(tiles);
                                 killed.clear();
+                                if(bot){
+                                    List<Piece> toKill = mediator.pickRandomMove();
+                                    for (Piece value : toKill) {
+                                        piecesGroup.getChildren().remove(value);
+                                    }
+                                    mediator.changeTurn(tiles);
+                                }
                             }
                         }
                     }

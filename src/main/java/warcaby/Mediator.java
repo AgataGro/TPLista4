@@ -35,6 +35,10 @@ public class Mediator {
         else moveSequences=getMoveSequencesKillPriority();
     }
 
+    public List<SingleMove> getRecord() {
+        return record;
+    }
+
     /**
      * @param square square where we killed a piece
      */
@@ -108,10 +112,13 @@ public class Mediator {
                 piece.move((int) (singleMove.getEnd().getX() / 70), (int) (singleMove.getEnd().getY() / 70));
                 singleMove.getEnd().setPiece(piece);
                 singleMove.getStart().setPiece(null);
-
+                record.add(singleMove);
             }
         }
         return killed;
+    }
+    public void addToRecord(SingleMove move){
+        record.add(move);
     }
 
     /**
@@ -153,15 +160,12 @@ public class Mediator {
      */
     public boolean continueTurn(Piece piece, Square[][] board){
         if(movedPiece==null){
-            System.out.println("no moved piece");
             return true;
         }
         else if(!getAvailibleTiles(piece, board).isEmpty()){
-            System.out.println("has moves");
             return true;
         }
         else{
-            System.out.println("has no moves");
             return false;
         }
     }
@@ -230,10 +234,8 @@ public class Mediator {
             }
             if (!temp.isEmpty()) {
                 for (SingleMove singleMove : temp) {
-                    System.out.println(singleMove.getAsString());
                     if (singleMove.getKilled() != null&& !killed.contains(singleMove.getKilled())){
                         result.add(singleMove.getEnd());
-                        System.out.println(singleMove.getAsString());
                     }
                 }
             }
@@ -290,7 +292,6 @@ public class Mediator {
                 result.add(singleMoves);
             }
         }
-        System.out.println(result);
         return result;
     }
 }

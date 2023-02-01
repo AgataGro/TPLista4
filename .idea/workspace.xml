@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="507d3691-9c6d-4f7a-9346-3ab98a14bdcd" name="Changes" comment="Poprawienie błędów. Dodanie opcji gry z botem. Implementacja gry z botem w PolishCheckers">
+    <list default="true" id="507d3691-9c6d-4f7a-9346-3ab98a14bdcd" name="Changes" comment="Poprawienie błędów.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/EnglishKingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/EnglishKingState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/EnglishManState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/EnglishManState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/EnglishCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/EnglishCheckers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Mediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/Mediator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/PolishCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/PolishCheckers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/PolishKingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/PolishKingState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/PolishManState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/PolishManState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/TurkishCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/TurkishCheckers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,7 +241,7 @@
       <workItem from="1675000144447" duration="4238000" />
       <workItem from="1675196885186" duration="5826000" />
       <workItem from="1675250590321" duration="3565000" />
-      <workItem from="1675257167439" duration="733000" />
+      <workItem from="1675257167439" duration="5449000" />
     </task>
     <task id="LOCAL-00001" summary="pom">
       <created>1670966715965</created>
@@ -406,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675255614590</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Poprawienie błędów.">
+      <created>1675258047266</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1675258047266</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -455,7 +460,8 @@
     <MESSAGE value="Poprawa błędu, zmiana testów dostępnych pól tak aby odzwierciedlały aktualne działanie funkcji" />
     <MESSAGE value="Zmiana nazwy" />
     <MESSAGE value="Poprawienie błędów. Dodanie opcji gry z botem. Implementacja gry z botem w PolishCheckers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Poprawienie błędów. Dodanie opcji gry z botem. Implementacja gry z botem w PolishCheckers" />
+    <MESSAGE value="Poprawienie błędów." />
+    <option name="LAST_COMMIT_MESSAGE" value="Poprawienie błędów." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
