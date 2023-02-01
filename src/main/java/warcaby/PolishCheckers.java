@@ -20,9 +20,8 @@ public class PolishCheckers extends Application {
     private Group piecesGroup = new Group();
     private Square[][] tiles = new Square[10][10];
     Mediator mediator;
-    boolean bot;
     List<Square> killed=new ArrayList<>();
-
+    boolean bot;
     static Stage classStage = new Stage();
     PolishCheckers(boolean bot){
         this.bot=bot;
@@ -79,15 +78,14 @@ public class PolishCheckers extends Application {
         }
 
         mediator=new Mediator(true,true);
-        List<Piece> pieceList = getPieces(true);
-        for (Piece piece : pieceList) {
-            mediator.addWhite(piece);
-        }
-        pieceList=getPieces(false);
-        for (Piece piece : pieceList) {
-            mediator.addBlack(piece);
-        }
-        mediator.calculateMoves(tiles);
+            List<Piece> pieceList = getPieces(true);
+            for (Piece piece : pieceList) {
+                mediator.addWhite(piece);
+            }
+            pieceList=getPieces(false);
+            for (Piece piece : pieceList) {
+                mediator.addBlack(piece);
+            }
 
         Scene scene = new Scene(pane,700,736);
         stage.setTitle("Polish checkers");

@@ -88,7 +88,7 @@ public class PolishManState implements State{
                     }
                     else if(piece.getColor()!=p.getColor()&&x-2>=0&&y-2>=0)
                     {
-                        if(tiles[x-2][y-2].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x-2][y-2],tiles[x-1][y-1]));
+                        if(tiles[x-2][y-2].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x-2][y-2],tiles[x-1][y-1],p));
                     }
                 }
                 break;
@@ -100,7 +100,7 @@ public class PolishManState implements State{
                         if(moveDirection==-1)result.add(new SingleMove(tiles[x][y],tiles[x+1][y-1],null));
                     }
                     else if(piece.getColor()!=p.getColor()&&x+2<=9&&y-2>=0){
-                        if(tiles[x+2][y-2].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x+2][y-2],tiles[x+1][y-1]));
+                        if(tiles[x+2][y-2].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x+2][y-2],tiles[x+1][y-1],p));
                     }
                 }
                 break;
@@ -112,7 +112,7 @@ public class PolishManState implements State{
                         if(moveDirection==1)result.add(new SingleMove(tiles[x][y],tiles[x-1][y+1],null));
                     }
                     else if(piece.getColor()!=p.getColor()&&x-2>=0&&y+2<=9){
-                        if(tiles[x-2][y+2].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x-2][y+2],tiles[x-1][y+1]));
+                        if(tiles[x-2][y+2].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x-2][y+2],tiles[x-1][y+1],p));
                     }
                 }
                 break;
@@ -124,7 +124,7 @@ public class PolishManState implements State{
                         if(moveDirection==1)result.add(new SingleMove(tiles[x][y],tiles[x+1][y+1],null));
                     }
                     else if(piece.getColor()!=p.getColor()&&x+2<=9&&y+2<=9){
-                        if(tiles[x+2][y+2].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x+2][y+2],tiles[x+1][y+1]));
+                        if(tiles[x+2][y+2].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x+2][y+2],tiles[x+1][y+1],p));
                     }
                 }
                 break;

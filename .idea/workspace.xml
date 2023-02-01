@@ -4,33 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="507d3691-9c6d-4f7a-9346-3ab98a14bdcd" name="Changes" comment="Zmiana nazwy">
+    <list default="true" id="507d3691-9c6d-4f7a-9346-3ab98a14bdcd" name="Changes" comment="Poprawienie błędów. Dodanie opcji gry z botem. Implementacja gry z botem w PolishCheckers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/BlackWin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/BlackWin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/Direction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/EnglishCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/EnglishCheckers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/EnglishKingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/EnglishKingState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/EnglishManState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/EnglishManState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/EnglishPiece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/EnglishPiece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Game.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/LaunchingCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/LaunchingCheckers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/Piece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/PieceManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/Mediator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Mediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/Mediator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/PolishCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/PolishCheckers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/PolishKingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/PolishKingState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/PolishManState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/PolishManState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/PolishPiece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/PolishPiece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/SingleMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/SingleMove.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/State.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/TurkishCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/TurkishCheckers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/TurkishKingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/TurkishKingState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/TurkishManState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/TurkishManState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/TurkishPiece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/TurkishPiece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/WhiteWin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/WhiteWin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/WinClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/WinServerThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/WinThread.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +242,8 @@
       <workItem from="1674995114959" duration="3238000" />
       <workItem from="1675000144447" duration="4238000" />
       <workItem from="1675196885186" duration="5826000" />
-      <workItem from="1675250590321" duration="1750000" />
+      <workItem from="1675250590321" duration="3565000" />
+      <workItem from="1675257167439" duration="733000" />
     </task>
     <task id="LOCAL-00001" summary="pom">
       <created>1670966715965</created>
@@ -417,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673867876019</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Poprawienie błędów. Dodanie opcji gry z botem. Implementacja gry z botem w PolishCheckers">
+      <created>1675255614590</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1675255614590</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -465,7 +454,8 @@
     <MESSAGE value="Komentarze" />
     <MESSAGE value="Poprawa błędu, zmiana testów dostępnych pól tak aby odzwierciedlały aktualne działanie funkcji" />
     <MESSAGE value="Zmiana nazwy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Zmiana nazwy" />
+    <MESSAGE value="Poprawienie błędów. Dodanie opcji gry z botem. Implementacja gry z botem w PolishCheckers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Poprawienie błędów. Dodanie opcji gry z botem. Implementacja gry z botem w PolishCheckers" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

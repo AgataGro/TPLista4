@@ -9,9 +9,9 @@ public class Mediator {
     boolean isWhiteTurn;
     boolean hasKillOption;
     Piece movedPiece =null;
-    List<Square> killed=new ArrayList<>();
-    List<List<SingleMove>> moveSequences=new ArrayList<>();
     boolean killMax;
+    List<List<SingleMove>> moveSequences=new ArrayList<>();
+    List<Square> killed=new ArrayList<>();
     List<SingleMove> record = new ArrayList<>();
 
     /**
@@ -33,7 +33,6 @@ public class Mediator {
         calculateMoves(board);
         if(killMax)moveSequences=getMoveSequencesMostKilled();
         else moveSequences=getMoveSequencesKillPriority();
-
     }
 
     /**
@@ -80,10 +79,7 @@ public class Mediator {
         }
         if (!temp.isEmpty()) {
             for (SingleMove singleMove : temp) {
-                if (singleMove.getStart() == start&&singleMove.getEnd()==end){
-                    square=singleMove.getKilled();
-                    record.add(singleMove);
-                }
+                if (singleMove.getStart() == start&&singleMove.getEnd()==end) square=singleMove.getKilled();
             }
         }
         return square;
@@ -243,7 +239,6 @@ public class Mediator {
             }
         }
         return result;
-
     }
     public void calculateMoves(Square[][] board){
         moveSequences.clear();

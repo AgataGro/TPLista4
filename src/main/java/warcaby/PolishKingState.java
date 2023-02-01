@@ -106,13 +106,18 @@ public class PolishKingState implements State{
                 break;
         }
         if(i!=0){
+            Piece killedPiece = null;
             while(true){
                 if(x+i<=9&&x+i>=0&&y+j<=9&&y+j>=0){
                     Piece p = tiles[x+i][y+j].getPiece();
                     if(p==null){
-                        result.add(new SingleMove(tiles[x][y],tiles[x+i][y+j],killed));
+                        if(killed==null)result.add(new SingleMove(tiles[x][y],tiles[x+i][y+j], null));
+                        else result.add(new SingleMove(tiles[x][y],tiles[x+i][y+j],killed,killedPiece));
                     }
-                    else if(piece.getColor()!=p.getColor()&&killed==null)killed=tiles[x+i][y+j];
+                    else if(piece.getColor()!=p.getColor()&&killed==null){
+                        killed=tiles[x+i][y+j];
+                        killedPiece=killed.getPiece();
+                    }
                     else break;
                 }
                 else break;
