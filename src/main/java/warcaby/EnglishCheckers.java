@@ -169,7 +169,6 @@ public class EnglishCheckers extends Application {
                         }
                         else {
                             if (!mediator.continueTurn(piece,tiles)) {
-                                System.out.println("endTurn, not moves");
                                 Piece killedPiece;
                                 for (Square square : killed) {
                                     if (square != null) {
