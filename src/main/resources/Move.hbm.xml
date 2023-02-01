@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="warcaby">
+    <class name="Move" table="Moves">
+        <id name="id" column="move_id">
+            <generator class="native"/>
+        </id>
+        <property name="startX" column="NAME" />
+        <property name="startY" column="DESCRIPTION" />
+
+        <many-to-one name="game" class="Game"
+                     column="CATEGORY_ID" not-null="true"/>
+    </class>
+</hibernate-mapping>

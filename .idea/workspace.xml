@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="507d3691-9c6d-4f7a-9346-3ab98a14bdcd" name="Changes" comment="Poprawienie błędów.">
+    <list default="true" id="507d3691-9c6d-4f7a-9346-3ab98a14bdcd" name="Changes" comment="Usunięcie println">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/EnglishCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/EnglishCheckers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Mediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/Mediator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/PolishCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/PolishCheckers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/TurkishCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/TurkishCheckers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +83,9 @@
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Agata\IdeaProjects\TPLista4\src\main\java" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="warcaby" />
@@ -166,6 +165,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="All in TPLista4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TPLista4" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="warcaby in TPLista4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TPLista4" />
       <extension name="coverage">
@@ -187,10 +194,12 @@
       <item itemvalue="Application.test" />
       <item itemvalue="Application.WinClient" />
       <item itemvalue="Application.WinServerThread" />
+      <item itemvalue="JUnit.All in TPLista4" />
       <item itemvalue="JUnit.warcaby in TPLista4" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in TPLista4" />
         <item itemvalue="JUnit.warcaby in TPLista4" />
         <item itemvalue="Application.WinClient" />
         <item itemvalue="Application.WinServerThread" />
@@ -242,6 +251,7 @@
       <workItem from="1675196885186" duration="5826000" />
       <workItem from="1675250590321" duration="3565000" />
       <workItem from="1675257167439" duration="5449000" />
+      <workItem from="1675294830229" duration="101000" />
     </task>
     <task id="LOCAL-00001" summary="pom">
       <created>1670966715965</created>
