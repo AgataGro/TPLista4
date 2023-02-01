@@ -1,8 +1,6 @@
 package warcaby;
 
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
 
 public class PolishPiece extends Piece{
     
@@ -25,6 +23,7 @@ public class PolishPiece extends Piece{
 
         this.state = state;
     }
+
     @Override
     public void move(int newX, int newY) {
         oldX = newX*70;
@@ -33,8 +32,6 @@ public class PolishPiece extends Piece{
         setCenterY(oldY+35);
         if((this.getColor()==Color.WHITE && newY==0) || (this.getColor()==Color.BLACK && newY==9)) {
             state = state.changeState();
-            //Image im = new Image("https://image.pngaaa.com/500/1998500-middle.png",false);
-            //setFill(new ImagePattern(im));
             setStroke(Color.GOLD);
             setStrokeWidth(5);
         }

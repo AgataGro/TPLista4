@@ -2,8 +2,8 @@ package warcaby;
 
 import javafx.scene.paint.Color;
 
-public class TurkishPiece extends Piece{
-    
+public class TurkishPiece extends Piece {
+
     /**
      * @param x one of the coordinates of the middle of the circle
      * @param y one of the coordinates of the middle of the circle

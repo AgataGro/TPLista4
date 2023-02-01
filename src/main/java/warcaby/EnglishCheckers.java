@@ -1,16 +1,16 @@
 package warcaby;
 
+import java.util.List;
+import java.util.ArrayList;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class EnglishCheckers extends Application {
 
@@ -18,9 +18,13 @@ public class EnglishCheckers extends Application {
     private Group piecesGroup = new Group();
     private Square[][] tiles = new Square[8][8];
     Mediator mediator;
+    boolean bot;
     List<Square> killed=new ArrayList<>();
-    
+
     static Stage classStage = new Stage();
+    EnglishCheckers(boolean bot){
+        this.bot=bot;
+    }
 
     @Override
     public void start(Stage stage) {
@@ -42,7 +46,7 @@ public class EnglishCheckers extends Application {
                 }
                 else {
                     if(i<3) {
-                        Piece piece = createPiece(x+35,y+35,30,Color.BLACK, new EnglishManState());
+                        Piece piece = createPiece(x+35,y+35,30,Color.BLACK,new EnglishManState());
                         Square square = new Square(x,y,70,70,Color.BROWN);
                         tiles[j][i] = square;
                         square.setPiece(piece);
@@ -55,7 +59,7 @@ public class EnglishCheckers extends Application {
                         tilesGroup.getChildren().add(square);
                     }
                     else if(i>4) {
-                        Piece piece = createPiece(x+35,y+35,30,Color.WHITE, new EnglishManState());
+                        Piece piece = createPiece(x+35,y+35,30,Color.WHITE,new EnglishManState());
                         Square square = new Square(x,y,70,70,Color.BROWN);
                         tiles[j][i] = square;
                         square.setPiece(piece);
@@ -68,7 +72,8 @@ public class EnglishCheckers extends Application {
             x = 0;
             y += 70;
         }
-        mediator=new Mediator(true);
+
+        mediator=new Mediator(true,false);
         List<Piece> pieceList = getPieces(true);
         for (Piece piece : pieceList) {
             mediator.addWhite(piece);
@@ -88,6 +93,11 @@ public class EnglishCheckers extends Application {
     private int getScenePlace(double x) {
         return (int)x/70;
     }
+
+    /**
+     * @param isWhite true if the piece is white, false otherwise
+     * @return a list of pieces in requested color
+     */
     private List<Piece> getPieces(boolean isWhite){
         List<Piece> temp=new ArrayList<>();
         for(int i=0;i<8;i++)
@@ -103,7 +113,6 @@ public class EnglishCheckers extends Application {
     }
 
     /**
-     * This function checks if a move is legal
      * @param piece a piece whose move legality we want to check
      * @param x a coordinate of the left top corner of a square where we want to place the piece
      * @param y a coordinate of the left top corner of a square where we want to place the piece
@@ -126,7 +135,7 @@ public class EnglishCheckers extends Application {
      */
     private Piece createPiece(int x, int y, int r, Color color, State state) {
         EnglishPiece piece = new EnglishPiece(x,y,r,color,state);
-        
+
         piece.setOnMouseReleased(e -> {
             int newX = getScenePlace(e.getSceneX());
             int newY = getScenePlace(e.getSceneY());
@@ -173,7 +182,6 @@ public class EnglishCheckers extends Application {
                             mediator.addKilled(mediator.getKilled(tiles[startX][startY], tiles[newX][newY], tiles));
                         }
                         piece.move(newX,newY);
-
                         tiles[startX][startY].setPiece(null);
                         tiles[newX][newY].setPiece(piece);
                         if(!mediator.hasKilled()){
@@ -235,7 +243,7 @@ public class EnglishCheckers extends Application {
                 temp.setStroke(null);
             }
         });
-        
+
         piece.setOnMouseDragged(e -> {
             piece.toFront();
         });
@@ -244,8 +252,8 @@ public class EnglishCheckers extends Application {
     }
 
     /**
-    *@param args array with given arguments
-    */
+     * @param args array of given arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }

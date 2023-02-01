@@ -2,14 +2,10 @@ package warcaby;
 
 import java.util.ArrayList;
 import java.util.List;
-/**
- * Klasa, która określa zachowanie damki w polskich warcabach
- */
+
 public class PolishKingState implements State{
 
-    /**
-     * @see State
-     */
+
     @Override
     public List<SingleMove> availibleMoves(Piece piece, Square[][] board) {
         List<SingleMove> result= new ArrayList<>();
@@ -19,27 +15,19 @@ public class PolishKingState implements State{
         }
         return result;
     }
-    /**
-     * @see State
-     * Funkcja uniemożliwia ponowne zbicie pionka
-     * Zbija maksymalną liczbę pionków
-     */
+
     @Override
     public List<List<SingleMove>> moveSequence(Piece piece, Square[][] board, List<SingleMove> steps) {
         List<SingleMove> current, list;
         List<List<SingleMove>> result = new ArrayList<>(), endResult = new ArrayList<>();
         current = availibleMoves(piece, board);
-        //usunięcie pionka z pola startowego
         board[piece.getOldX()/70][piece.getOldY()/70].setPiece(null);
-        //zmienna do sprawdzenia czy przeskoczyliśmy nad danym pionkiem
         boolean contained;
         if(current.size()>0){
             for (SingleMove square : current) {
-
                 contained=false;
                 list = new ArrayList<>(steps);
                 if (square.getKilled()!=null) {
-                    square.setKilledPiece(board[(int) (square.getKilled().getX() / 70)][(int) (square.getKilled().getY() / 70)].getPiece());
                     list.add(square);
                     Piece p = new PolishPiece((int) square.getEnd().getX()+35,(int) square.getEnd().getY()+35,30, piece.getColor(), new PolishKingState());
                     for(SingleMove jump : steps){
@@ -85,19 +73,11 @@ public class PolishKingState implements State{
         return result;
     }
 
-    /**
-     *
-     * @return zwraca samą siebie
-     */
     @Override
     public State changeState() {
         return this;
     }
-    /**
-     * W zależności od kierunku sprawdzane są możliwości ruchu
-     * Pionek porusza się po skosie o dowolną ilość pól
-     * @see State
-     */
+
     @Override
     public List<SingleMove> move(Piece piece, Square[][] tiles, Direction direction) {
         List<SingleMove> result=new ArrayList<>();
@@ -105,24 +85,25 @@ public class PolishKingState implements State{
         int y = piece.getOldY()/70;
         int i=0, j=0;
         Square killed=null;
-        boolean end=false;
         switch (direction){
-            case UpLeft -> {
+            case UpLeft :
                 i=-1;
                 j=-1;
-            }
-            case UpRight -> {
+                break;
+            case UpRight :
                 i=1;
                 j=-1;
-            }
-            case DownLeft -> {
+                break;
+            case DownLeft :
                 i=-1;
                 j=1;
-            }
-            case DownRight -> {
+                break;
+            case DownRight :
                 i=1;
                 j=1;
-            }
+                break;
+            default:
+                break;
         }
         if(i!=0){
             while(true){

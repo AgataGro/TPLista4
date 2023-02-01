@@ -2,39 +2,25 @@ package warcaby;
 
 import java.util.ArrayList;
 import java.util.List;
-/**
- * Klasa, która określa zachowanie damki w tureckich warcabach
- */
-public class TurkishKingState implements State{
-    /**
-     * @see State
-     */
+
+public class TurkishKingState implements State {
     @Override
     public List<SingleMove> availibleMoves(Piece piece, Square[][] board) {
         List<SingleMove> result= new ArrayList<>();
-
         for (Direction direction : Direction.values()) {
             result.addAll(move(piece, board, direction));
         }
         return result;
     }
-    /**
-     * @see State
-     * Funkcja uniemożliwia ponowne zbicie pionka
-     * Zbija maksymalną liczbę pionków
-     */
     @Override
     public List<List<SingleMove>> moveSequence(Piece piece, Square[][] board, List<SingleMove> steps) {
-        //Inicjalizacja zmiennych
         List<SingleMove> current, list;
         List<List<SingleMove>> result = new ArrayList<>(), endResult = new ArrayList<>();
         current = availibleMoves(piece, board);
-        //usunięcie pionka z pola startowego
         board[piece.getOldX()/70][piece.getOldY()/70].setPiece(null);
-        //zmienne do sprawdzenia czy nie robimy zwory o 180 stopni
         Direction dir1, dir2;
         int x, y;
-        boolean directionOK;
+        boolean directionOK=true;
         if(current.size()>0){
             for (SingleMove square : current) {
                 directionOK=true;
@@ -50,7 +36,6 @@ public class TurkishKingState implements State{
                 }
                 list = new ArrayList<>(steps);
                 if (square.getKilled()!=null) {
-                    square.setKilledPiece(board[(int) (square.getKilled().getX() / 70)][(int) (square.getKilled().getY() / 70)].getPiece());
                     if(!steps.isEmpty()) {
                         x = (int) (steps.get(steps.size() - 1).getEnd().getX() / 70 - steps.get(steps.size() - 1).getStart().getX() / 70);
                         y = (int) (steps.get(steps.size() - 1).getEnd().getY() / 70 - steps.get(steps.size() - 1).getStart().getY() / 70);
@@ -114,19 +99,11 @@ public class TurkishKingState implements State{
         }
         return result;
     }
-    /**
-     *
-     * @return zwraca samą siebie
-     */
+
     @Override
     public State changeState() {
         return this;
     }
-    /**
-     * W zależności od kierunku sprawdzane są możliwości ruchu
-     * Pionek porusza się po prostej o dowolną ilość pól
-     * @see State
-     */
     @Override
     public List<SingleMove> move(Piece piece, Square[][] tiles, Direction direction) {
         List<SingleMove> result=new ArrayList<>();
@@ -134,29 +111,36 @@ public class TurkishKingState implements State{
         int y = piece.getOldY()/70;
         int i=0, j=0;
         Square killed=null;
-        boolean end=false;
-        switch (direction){
-            case Up -> {
+        switch (direction) {
+            case Up :
                 j=-1;
-            }
-            case Down -> {
+                break;
+            case Down :
                 j=1;
-            }
-            case Left -> {
+                break;
+            case Left :
                 i=-1;
-            }
-            case Right -> {
+                break;
+            case Right :
                 i=1;
-            }
+                break;
+            default:
+                break;
         }
         if(i!=0||j!=0){
+            Piece killedPiece = null;
             while(true){
                 if(x+i<=7&&x+i>=0&&y+j<=7&&y+j>=0){
                     Piece p = tiles[x+i][y+j].getPiece();
                     if(p==null){
-                        result.add(new SingleMove(tiles[x][y],tiles[x+i][y+j],killed));
+                        if(killed==null)result.add(new SingleMove(tiles[x][y],tiles[x+i][y+j], null));
+                        else result.add(new SingleMove(tiles[x][y],tiles[x+i][y+j],killed,killedPiece));
+
                     }
-                    else if(piece.getColor()!=p.getColor()&&killed==null)killed=tiles[x+i][y+j];
+                    else if(piece.getColor()!=p.getColor()&&killed==null){
+                        killed=tiles[x+i][y+j];
+                        killedPiece=killed.getPiece();
+                    }
                     else break;
                 }
                 else break;

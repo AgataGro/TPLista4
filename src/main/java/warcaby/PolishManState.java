@@ -3,37 +3,22 @@ package warcaby;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Klasa, która określa zachowanie zwykłego pionka w polskich warcabach
- */
 public class PolishManState implements State{
-    /**
-     * @see State
-     */
     @Override
     public List<SingleMove> availibleMoves(Piece piece, Square[][] board) {
         List<SingleMove> result= new ArrayList<>();
-        //przejście po wszystkich kierunkach
+
         for (Direction direction : Direction.values()) {
             result.addAll(move(piece, board, direction));
         }
         return result;
     }
-
-    /**
-     * @see State
-     * Funkcja uniemożliwia ponowne zbicie pionka
-     * Zbija maksymalną liczbę pionków
-     */
     @Override
     public List<List<SingleMove>> moveSequence(Piece piece, Square[][] board, List<SingleMove> steps) {
-        //Inicjalizacja zmiennych
         List<SingleMove> current, list;
         List<List<SingleMove>> result = new ArrayList<>(), endResult = new ArrayList<>();
         current = availibleMoves(piece, board);
-        //usunięcie pionka z pola startowego
         board[piece.getOldX()/70][piece.getOldY()/70].setPiece(null);
-        //zmienna do sprawdzenia czy przeskoczyliśmy nad danym pionkiem
         boolean contained;
         if(current.size()>0){
             for (SingleMove square : current) {
@@ -84,22 +69,10 @@ public class PolishManState implements State{
         }
         return result;
     }
-
-    /**
-     *
-     * @return zwraca stan PolishKingState
-     */
     @Override
     public State changeState() {
         return new PolishKingState();
     }
-
-    /**
-     * W zależności od kierunku sprawdzane są możliwości ruchu
-     * Pionek porusza się po skosie o 1 pole
-     * Pionek bije do przodu i do tyłu
-     * @see State
-     */
     @Override
     public List<SingleMove> move(Piece piece, Square[][] tiles, Direction direction){
         List<SingleMove> result=new ArrayList<>();
@@ -107,7 +80,7 @@ public class PolishManState implements State{
         int y = piece.getOldY()/70;
         int moveDirection = piece.getMoveDirection();
         switch (direction){
-            case UpLeft -> {
+            case UpLeft : {
                 if(x-1>=0&&y-1>=0){
                     Piece p = tiles[x-1][y-1].getPiece();
                     if(p==null){
@@ -118,8 +91,9 @@ public class PolishManState implements State{
                         if(tiles[x-2][y-2].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x-2][y-2],tiles[x-1][y-1]));
                     }
                 }
+                break;
             }
-            case UpRight -> {
+            case UpRight : {
                 if(x+1<=9&&y-1>=0){
                     Piece p = tiles[x+1][y-1].getPiece();
                     if(p==null){
@@ -129,8 +103,9 @@ public class PolishManState implements State{
                         if(tiles[x+2][y-2].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x+2][y-2],tiles[x+1][y-1]));
                     }
                 }
+                break;
             }
-            case DownLeft -> {
+            case DownLeft : {
                 if(x-1>=0&&y+1<=9){
                     Piece p = tiles[x-1][y+1].getPiece();
                     if(p==null){
@@ -140,8 +115,9 @@ public class PolishManState implements State{
                         if(tiles[x-2][y+2].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x-2][y+2],tiles[x-1][y+1]));
                     }
                 }
+                break;
             }
-            case DownRight -> {
+            case DownRight : {
                 if(x+1<=9&&y+1<=9){
                     Piece p = tiles[x+1][y+1].getPiece();
                     if(p==null){
@@ -151,7 +127,10 @@ public class PolishManState implements State{
                         if(tiles[x+2][y+2].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x+2][y+2],tiles[x+1][y+1]));
                     }
                 }
+                break;
             }
+            default:
+                break;
         }
         return result;
     }

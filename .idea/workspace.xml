@@ -4,26 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="507d3691-9c6d-4f7a-9346-3ab98a14bdcd" name="Changes" comment="Generowanie sekwencji ruchów">
-      <change afterPath="$PROJECT_DIR$/src/test/java/warcaby/EnglishManStateTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/warcaby/PolishKingStateTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/warcaby/TurkishManStateTest.java" afterDir="false" />
+    <list default="true" id="507d3691-9c6d-4f7a-9346-3ab98a14bdcd" name="Changes" comment="Zmiana nazwy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/CheckersBoard1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/CheckersBoard2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/CheckersBoard3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/BlackWin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/BlackWin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/Direction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/EnglishCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/EnglishCheckers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/EnglishKingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/EnglishKingState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/EnglishManState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/EnglishManState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/King1State.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/EnglishPiece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/EnglishPiece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Game.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/LaunchingCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/LaunchingCheckers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Man1State.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Mediator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/MoveDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/MoveDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/MoveType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/MoveType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Piece1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/Piece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/PieceManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/Mediator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/PolishCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/PolishCheckers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/PolishKingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/PolishKingState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/PolishManState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/PolishManState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/PolishPiece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/PolishPiece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/SingleMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/SingleMove.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/Square.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/TurkishCheckers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/TurkishCheckers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/TurkishKingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/TurkishKingState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/TurkishManState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/TurkishManState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/TurkishPiece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/TurkishPiece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/WhiteWin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/warcaby/WhiteWin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/WinClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/WinServerThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/warcaby/WinThread.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,15 +40,28 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="5674df6b-60ef-4333-92bd-654b2015c27f" />
+        <option name="url" value="https://github.com/AgataGro/TPLista4.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -69,13 +89,13 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;19&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Users/agata/IdeaProjects/TPLista4/src/main/java/warcaby&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Agata/IdeaProjects/TPLista4&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Agata/IdeaProjects/TPLista4/src/main/java/warcaby&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
@@ -83,6 +103,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Agata\IdeaProjects\TPLista4\src\main\java\warcaby" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
@@ -98,13 +121,22 @@
       <command value="mvn archetype:generate \         -DarchetypeGroupId=org.openjfx \         -DarchetypeArtifactId=javafx-archetype-simple \         -DarchetypeVersion=0.0.3 \         -DgroupId=org.openjfx \         -DartifactId=sample \         -Dversion=1.0.0 \         -Djavafx-version=19" />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.launch">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="warcaby.GUI" />
+      <module name="TPLista4" />
+      <option name="PROGRAM_PARAMETERS" value="--module-path /path/to/JavaFX/lib --add-modules=javafx.controls" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\javafx-sdk-19\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="WinClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="warcaby.WinClient" />
       <module name="TPLista4" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="warcaby.*" />
+          <option name="PATTERN" value="warcaby.checkers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -117,7 +149,7 @@
       <module name="TPLista4" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="warcaby.*" />
+          <option name="PATTERN" value="warcaby.checkers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -155,15 +187,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="warcaby in TPLista4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TPLista4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="warcaby.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="warcaby" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.polish" />
+      <item itemvalue="Application.Unnamed" />
       <item itemvalue="Application.launch" />
       <item itemvalue="Application.test" />
       <item itemvalue="Application.WinClient" />
       <item itemvalue="Application.WinServerThread" />
+      <item itemvalue="JUnit.warcaby in TPLista4" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.warcaby in TPLista4" />
         <item itemvalue="Application.WinClient" />
         <item itemvalue="Application.WinServerThread" />
       </list>
@@ -193,7 +242,26 @@
       <workItem from="1673007151280" duration="3959000" />
       <workItem from="1673033094122" duration="5745000" />
       <workItem from="1673092054490" duration="24856000" />
-      <workItem from="1673175581222" duration="16276000" />
+      <workItem from="1673175581222" duration="18458000" />
+      <workItem from="1673291074816" duration="9244000" />
+      <workItem from="1673347439434" duration="3682000" />
+      <workItem from="1673380849475" duration="7613000" />
+      <workItem from="1673461602790" duration="15781000" />
+      <workItem from="1673520962669" duration="18440000" />
+      <workItem from="1673604739594" duration="22687000" />
+      <workItem from="1673650988897" duration="252000" />
+      <workItem from="1673705654850" duration="24429000" />
+      <workItem from="1673772162204" duration="10398000" />
+      <workItem from="1673801417044" duration="147000" />
+      <workItem from="1673818821250" duration="10152000" />
+      <workItem from="1673852661236" duration="12962000" />
+      <workItem from="1673906284450" duration="8000" />
+      <workItem from="1674740232705" duration="1726000" />
+      <workItem from="1674947683396" duration="1536000" />
+      <workItem from="1674995114959" duration="3238000" />
+      <workItem from="1675000144447" duration="4238000" />
+      <workItem from="1675196885186" duration="5826000" />
+      <workItem from="1675250590321" duration="1750000" />
     </task>
     <task id="LOCAL-00001" summary="pom">
       <created>1670966715965</created>
@@ -272,11 +340,99 @@
       <option name="project" value="LOCAL" />
       <updated>1673184335809</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Generowanie sekwencji ruchów">
+      <created>1673197857724</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1673197857724</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Fix zmiana stanu">
+      <created>1673389261606</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1673389261606</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Stworzenie i implementacja wspólnego interfejsu">
+      <created>1673389313579</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1673389313579</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Zmiana sposobu sprawdzania ruchów">
+      <created>1673389363967</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1673389363967</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Zmiana sposobu sprawdzania ruchów">
+      <created>1673389946672</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1673389946672</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Małe poprawki + testy generowania sekwencji ruchów pionków">
+      <created>1673480328342</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1673480328342</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Zmienienie 9 na 7">
+      <created>1673626484615</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1673626484615</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Wymuszenie zbijania pionków. Umożliwienie ruchu pionków tylko jednego koloru">
+      <created>1673786039807</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1673786039807</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Komentarze">
+      <created>1673853126795</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1673853126795</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Poprawa błędu, zmiana testów dostępnych pól tak aby odzwierciedlały aktualne działanie funkcji">
+      <created>1673866736141</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1673866736141</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Zmiana nazwy">
+      <created>1673867876019</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1673867876019</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -300,7 +456,16 @@
     <MESSAGE value="Podświetlanie pól na które można przesunąć pionek, tylko dla PolishCheckers, damka" />
     <MESSAGE value="Sprawdzanie pojedyńczych ruchów dla każdego rodzaju pionka, tworzenie pionków z odpowiednim State" />
     <MESSAGE value="Generowanie sekwencji ruchów" />
-    <option name="LAST_COMMIT_MESSAGE" value="Generowanie sekwencji ruchów" />
+    <MESSAGE value="Fix zmiana stanu" />
+    <MESSAGE value="Stworzenie i implementacja wspólnego interfejsu" />
+    <MESSAGE value="Zmiana sposobu sprawdzania ruchów" />
+    <MESSAGE value="Małe poprawki + testy generowania sekwencji ruchów pionków" />
+    <MESSAGE value="Zmienienie 9 na 7" />
+    <MESSAGE value="Wymuszenie zbijania pionków. Umożliwienie ruchu pionków tylko jednego koloru" />
+    <MESSAGE value="Komentarze" />
+    <MESSAGE value="Poprawa błędu, zmiana testów dostępnych pól tak aby odzwierciedlały aktualne działanie funkcji" />
+    <MESSAGE value="Zmiana nazwy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Zmiana nazwy" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

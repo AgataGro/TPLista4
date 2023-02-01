@@ -3,14 +3,14 @@ package warcaby;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
 public class TurkishCheckers extends Application {
 
@@ -19,8 +19,12 @@ public class TurkishCheckers extends Application {
     Group piecesGroup = new Group();
     Mediator mediator;
     List<Square> killed=new ArrayList<>();
-    
+    boolean bot;
+
     static Stage classStage = new Stage();
+    TurkishCheckers(boolean bot){
+        this.bot=bot;
+    }
 
     @Override
     public void start(Stage stage) {
@@ -42,12 +46,12 @@ public class TurkishCheckers extends Application {
                 tiles[j][i] = square;
                 tilesGroup.getChildren().add(square);
                 if(i == 1 || i == 2) {
-                    Piece piece = createPiece(x+35,y+35,30,Color.BLACK, new TurkishManState());
+                    Piece piece = createPiece(x+35,y+35,30,Color.BLACK,new TurkishManState());
                     square.setPiece(piece);
                     piecesGroup.getChildren().add(piece);
                 }
                 else if(i == 5 || i == 6) {
-                    Piece piece = createPiece(x+35,y+35,30,Color.WHITE, new TurkishManState());
+                    Piece piece = createPiece(x+35,y+35,30,Color.WHITE,new TurkishManState());
                     square.setPiece(piece);
                     piecesGroup.getChildren().add(piece);
                 }
@@ -56,7 +60,8 @@ public class TurkishCheckers extends Application {
             x = 0;
             y += 70;
         }
-        mediator=new Mediator(true);
+
+        mediator=new Mediator(true,true);
         List<Piece> pieceList = getPieces(true);
         for (Piece piece : pieceList) {
             mediator.addWhite(piece);
@@ -77,6 +82,11 @@ public class TurkishCheckers extends Application {
     private int getScenePlace(double x) {
         return (int)x/70;
     }
+
+    /**
+     * @param isWhite true if white pieces are requested, false otherwise
+     * @return list of white or black pieces
+     */
     private List<Piece> getPieces(boolean isWhite){
         List<Piece> temp=new ArrayList<>();
         for(int i=0;i<8;i++)
@@ -90,8 +100,9 @@ public class TurkishCheckers extends Application {
         }
         return temp;
     }
+
     /**
-     * @param piece a piece whose move legality we want to check
+     * @param piece a piece whose move's legality we want to check
      * @param x a coordinate of the left top corner of a square where we want to place the piece
      * @param y a coordinate of the left top corner of a square where we want to place the piece
      * @return true if we can move or false in opposite case
@@ -118,7 +129,7 @@ public class TurkishCheckers extends Application {
             int newX = getScenePlace(e.getSceneX());
             int newY = getScenePlace(e.getSceneY());
 
-            if(newX<0 || newY<0 || newX>7 || newY>7 || !checkMove(piece,newX,newY))
+            if(newX<0 || newY<0 || newX>7 || newY>7 || !checkMove(piece, newX, newY))
                 piece.notMove();
             else {
                 int startX = getScenePlace(piece.getOldX());
@@ -158,9 +169,7 @@ public class TurkishCheckers extends Application {
                         if(mediator.getKilled(tiles[startX][startY], tiles[newX][newY], tiles)!=null) {
                             killed.add(mediator.getKilled(tiles[startX][startY], tiles[newX][newY], tiles));
                             mediator.addKilled(mediator.getKilled(tiles[startX][startY], tiles[newX][newY], tiles));
-                        }
-                        piece.move(newX,newY);
-
+                        }                        piece.move(newX,newY);
                         tiles[startX][startY].setPiece(null);
                         tiles[newX][newY].setPiece(piece);
                         if(!mediator.hasKilled()){
@@ -222,7 +231,7 @@ public class TurkishCheckers extends Application {
                 temp.setStroke(null);
             }
         });
-        
+
         piece.setOnMouseDragged(e -> {
             piece.toFront();
         });
@@ -230,9 +239,6 @@ public class TurkishCheckers extends Application {
         return piece;
     }
 
-    /**
-    *@param args array with given arguments
-    */
     public static void main(String[] args) {
         launch(args);
     }

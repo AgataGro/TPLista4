@@ -1,5 +1,6 @@
 package warcaby;
 
+//import javafx.scene.Scene;
 
 import java.util.List;
 
@@ -10,14 +11,14 @@ import java.util.List;
  * King - zachowanie damki
  */
 public interface State {
+
     /**
-     * Funkcja sprawdzająca, na które pola można przesunąć pionek w zależności od jego stanu i układu pionków na planszy
-     * @param piece zaznaczony pionek
-     * @param board pola na wykorzystywanej planszy
-     * @return lista pól, na które można przesunąć pionek
+     * @param piece piece which available moves we want to get
+     * @param board array of squares
+     * @return
      */
     public List<SingleMove> availibleMoves(Piece piece, Square[][] board);
-    
+
     /**
      * @param piece piece which sequence of available moves is returned
      * @param board array of aquares
@@ -25,12 +26,12 @@ public interface State {
      * @return list of lists of move sequences
      */
     public List<List<SingleMove>> moveSequence(Piece piece, Square[][] board, List<SingleMove> steps);
-    
+
     /**
      * @return state after change
      */
     public State changeState();
-    
+
     /**
      * @param piece piece to move
      * @param tiles array of squares

@@ -3,7 +3,7 @@ package warcaby;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 
-public class Square extends Rectangle implements Cloneable{
+public class Square extends Rectangle implements Cloneable {
     
     private Piece piece = null;
     boolean isKilled=false;
@@ -50,7 +50,7 @@ public class Square extends Rectangle implements Cloneable{
     public void setPiece(Piece piece) {
         this.piece = piece;
     }
-    
+
     /**
      * @return color of this square
      */
@@ -60,5 +60,4 @@ public class Square extends Rectangle implements Cloneable{
     public Square clone() throws CloneNotSupportedException{
         return (Square) super.clone();
     }
-
 }

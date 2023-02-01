@@ -5,7 +5,6 @@ import javafx.scene.paint.Color;
 public class EnglishPiece extends Piece {
 
     /**
-     * a constructor which creates a new EnglishPiece and sets some values
      * @param x one of the coordinates of the middle of the circle
      * @param y one of the coordinates of the middle of the circle
      * @param r the value of circle radius

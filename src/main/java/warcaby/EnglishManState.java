@@ -1,49 +1,32 @@
 package warcaby;
 
-import javafx.scene.paint.Color;
-
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.paint.Color;
 import java.util.Objects;
-/**
- * Klasa, która określa zachowanie zwykłego pionka w angielskich warcabach
- */
-public class EnglishManState implements State{
-    /**
-     * @see State
-     */
+
+public class EnglishManState implements State {
     @Override
     public List<SingleMove> availibleMoves(Piece piece, Square[][] board) {
         List<SingleMove> result= new ArrayList<>();
-
         for (Direction direction : Direction.values()) {
             result.addAll(move(piece, board, direction));
         }
         return result;
     }
-    /**
-     * @see State
-     * Funkcja uniemożliwia ponowne zbicie pionka
-     * O ile ma możliwość zbija pionki
-     */
     @Override
     public List<List<SingleMove>> moveSequence(Piece piece, Square[][] board, List<SingleMove> steps) {
-
-        //Inicjalizacja zmiennych
         List<SingleMove> current, list;
         List<List<SingleMove>> result = new ArrayList<>(), endResult = new ArrayList<>();
         current = availibleMoves(piece, board);
-        //usunięcie pionka z pola startowego
         board[piece.getOldX()/70][piece.getOldY()/70].setPiece(null);
         //zmienna do sprawdzenia czy przeskoczyliśmy nad danym pionkiem
         boolean contained;
         if(current.size()>0){
             for (SingleMove square : current) {
-
                 contained=false;
                 list = new ArrayList<>(steps);
                 if (square.getKilled()!=null) {
-                    square.setKilledPiece(board[(int) (square.getKilled().getX() / 70)][(int) (square.getKilled().getY() / 70)].getPiece());
                     list.add(square);
                     Piece p = new EnglishPiece((int) square.getEnd().getX()+35,(int) square.getEnd().getY()+35,30, piece.getColor(), new EnglishManState());
                     for(SingleMove jump : steps){
@@ -79,7 +62,6 @@ public class EnglishManState implements State{
             }
         }
         result.clear();
-        //pozbycie duplikatów
         for (List<SingleMove> squares : endResult) {
             if(result.isEmpty())result.add(squares);
             else if(squares.get(0).getKilled()!=null){
@@ -116,20 +98,11 @@ public class EnglishManState implements State{
         return endResult;
     }
 
-    /**
-     *
-     * @return zwraca stan EnglishKingState
-     */
     @Override
     public State changeState() {
         return new EnglishKingState();
     }
-    /**
-     * W zależności od kierunku sprawdzane są możliwości ruchu
-     * Pionek porusza się po skosie o 1 pole
-     * Pionek bije do przodu
-     * @see State
-     */
+    
     @Override
     public List<SingleMove> move(Piece piece, Square[][] tiles, Direction direction) {
         List<SingleMove> result=new ArrayList<>();
@@ -137,7 +110,7 @@ public class EnglishManState implements State{
         int y = piece.getOldY()/70;
         int moveDirection = piece.getMoveDirection();
         switch (direction){
-            case UpLeft -> {
+            case UpLeft : {
                 if(x-1>=0&&y-1>=0){
                     if(moveDirection==-1) {
                         Piece p = tiles[x - 1][y - 1].getPiece();
@@ -149,8 +122,9 @@ public class EnglishManState implements State{
                         }
                     }
                 }
+                break;
             }
-            case UpRight -> {
+            case UpRight : {
                 if(x+1<=7&&y-1>=0){
                     if(moveDirection==-1) {
                         Piece p = tiles[x + 1][y - 1].getPiece();
@@ -162,8 +136,9 @@ public class EnglishManState implements State{
                         }
                     }
                 }
+                break;
             }
-            case DownLeft -> {
+            case DownLeft : {
                 if(x-1>=0&&y+1<=7){
                     if(moveDirection==1) {
                         Piece p = tiles[x - 1][y + 1].getPiece();
@@ -175,8 +150,9 @@ public class EnglishManState implements State{
                         }
                     }
                 }
+                break;
             }
-            case DownRight -> {
+            case DownRight : {
                 if(x+1<=7&&y+1<=7){
                     if(moveDirection==1) {
                         Piece p = tiles[x + 1][y + 1].getPiece();
@@ -188,7 +164,10 @@ public class EnglishManState implements State{
                         }
                     }
                 }
+                break;
             }
+            default:
+                break;
         }
         return result;
     }

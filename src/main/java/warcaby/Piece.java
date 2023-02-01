@@ -5,11 +5,14 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+ * klasa abstrakcyjna pozwoli na tworzenie różnych rodzajów pionków
+ * bez podawania konkretnych nazw np. PolishPiece
+ * metodą abstrakcyjną jest tylko move, ponieważ to będzie różne dla każdego
+ * z rodzajów pionków (PolishPiece, EnglishPiece, TurkishPiece)
+ */
 public abstract class Piece extends Circle {
-    protected double mouseX, mouseY;
     protected int oldX, oldY;
-    // moveDirection jest potrzebne, żeby potem zablokować ruchy pionków do tyłu
     protected int moveDirection;
     protected State state;
 
@@ -51,6 +54,13 @@ public abstract class Piece extends Circle {
     }
 
     /**
+     * @return state of the piece
+     */
+    public State getState() {
+        return this.state;
+    }
+
+    /**
      * @param newX x coordinate of the place to which we want to move a piece
      * @param newY y coordinate of the place to which we want to move a piece
      */
@@ -77,7 +87,7 @@ public abstract class Piece extends Circle {
                 if(move.getKilled()!=null){
                     result.clear();
                     result.add(move.getEnd());
-                    killed=true;
+                    killed = true;
                 }
                 else result.add(move.getEnd());
             } else {
@@ -88,7 +98,7 @@ public abstract class Piece extends Circle {
         }
         return result;
     }
-    
+
     /**
      * @param board array of squares
      * @return list with al squares where a piece can move
@@ -102,6 +112,7 @@ public abstract class Piece extends Circle {
                 if(move.getKilled()!=null){
                     result.clear();
                     result.add(move);
+                    killed=true;
                 }
                 else result.add(move);
             } else {
@@ -110,12 +121,11 @@ public abstract class Piece extends Circle {
                 }
             }
         }
-        board[getOldX()/70][getOldY()/70].setPiece(this);
         return result;
     }
-    
+
     /**
-     * @param board table with squares from the board
+     * @param board table with all the squares of the board we are using to play checkers
      * @return sequence of moves we can do with the piece
      */
     public List<List<SingleMove>> moveSequences(Square[][] board){
@@ -123,24 +133,21 @@ public abstract class Piece extends Circle {
         result = state.moveSequence(this, board, new ArrayList<>());
         board[getOldX()/70][getOldY()/70].setPiece(this);
         for (List<SingleMove> singleMoves : result) {
-            for (SingleMove singleMove : singleMoves) {
-                if(singleMove.getKilled()!=null) {
-                    singleMove.getKilled().setPiece(singleMove.getKilledPiece());
+            if (!singleMoves.isEmpty()) {
+                for (SingleMove singleMove : singleMoves) {
+                    if (singleMove.getKilled() != null) {
+                        singleMove.getKilled().setPiece(singleMove.getKilledPiece());
+                    }
                 }
             }
         }
         return result;
     }
-    
+
     /**
      * method to call when a piece should change its state
      */
     public void changeState(){
         state.changeState();
     }
-
-    /**
-     * @return state of the piece
-     */
-    public State getState() {return this.state;}
 }

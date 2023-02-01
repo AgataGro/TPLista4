@@ -4,42 +4,26 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.List;
-/**
- * Klasa, która określa zachowanie zwykłego pionka w tureckich warcabach
- */
+
 public class TurkishManState implements State{
-    /**
-     * @see State
-     */
     @Override
     public List<SingleMove> availibleMoves(Piece piece, Square[][] board) {
         List<SingleMove> result= new ArrayList<>();
-
         for (Direction direction : Direction.values()) {
             result.addAll(move(piece, board, direction));
         }
         return result;
     }
-    /**
-     * @see State
-     * Funkcja uniemożliwia ponowne zbicie pionka
-     * Zbija maksymalną liczbę pionków
-     */
     @Override
     public List<List<SingleMove>> moveSequence(Piece piece, Square[][] board, List<SingleMove> steps) {
-        //Inicjalizacja zmiennych
         List<SingleMove> current, list;
         List<List<SingleMove>> result = new ArrayList<>(), endResult = new ArrayList<>();
         current = availibleMoves(piece, board);
-        //usunięcie pionka z pola startowego
         board[piece.getOldX()/70][piece.getOldY()/70].setPiece(null);
-        //zmienna do sprawdzenia czy przeskoczyliśmy nad danym pionkiem
         if(current.size()>0){
             for (SingleMove square : current) {
-
                 list = new ArrayList<>(steps);
                 if (square.getKilled()!=null) {
-                    square.setKilledPiece(board[(int) (square.getKilled().getX() / 70)][(int) (square.getKilled().getY() / 70)].getPiece());
                     list.add(square);
                     Piece p = new TurkishPiece((int) square.getEnd().getX()+35,(int) square.getEnd().getY()+35,30, piece.getColor(), new TurkishManState());
                     board[(int) (square.getKilled().getX()/70)][(int) (square.getKilled().getY()/70)].setPiece(null);
@@ -83,21 +67,10 @@ public class TurkishManState implements State{
         }
         return result;
     }
-
-    /**
-     *
-     * @return zwraca TurkishKingState
-     */
     @Override
     public State changeState() {
         return new TurkishKingState();
     }
-    /**
-     * W zależności od kierunku sprawdzane są możliwości ruchu
-     * Pionek porusza się po prostej o 1 pole
-     * Pionek bije do przodu i do tyłu
-     * @see State
-     */
     @Override
     public List<SingleMove> move(Piece piece, Square[][] tiles, Direction direction) {
         List<SingleMove> result=new ArrayList<>();
@@ -105,7 +78,7 @@ public class TurkishManState implements State{
         int y = piece.getOldY()/70;
         int moveDirection = piece.getMoveDirection();
         switch (direction){
-            case Up -> {
+            case Up :
                 if(y-1>=0){
                     if(moveDirection==-1) {
                         Piece p = tiles[x][y - 1].getPiece();
@@ -113,12 +86,12 @@ public class TurkishManState implements State{
                             result.add(new SingleMove(tiles[x][y], tiles[x][y - 1], null));
                         } else if (piece.getColor() != p.getColor() && y - 2 >= 0) {
                             if (tiles[x][y - 2].getPiece() == null)
-                                result.add(new SingleMove(tiles[x][y], tiles[x][y - 2], tiles[x][y - 1]));
+                                result.add(new SingleMove(tiles[x][y], tiles[x][y - 2], tiles[x][y - 1],p));
                         }
                     }
                 }
-            }
-            case Down -> {
+                break;
+            case Down :
                 if(y+1<=7){
                     if(moveDirection==1) {
                         Piece p = tiles[x][y + 1].getPiece();
@@ -126,33 +99,35 @@ public class TurkishManState implements State{
                             result.add(new SingleMove(tiles[x][y], tiles[x][y + 1], null));
                         } else if (piece.getColor() != p.getColor() && y + 2 <= 7) {
                             if (tiles[x][y + 2].getPiece() == null)
-                                result.add(new SingleMove(tiles[x][y], tiles[x][y + 2], tiles[x][y + 1]));
+                                result.add(new SingleMove(tiles[x][y], tiles[x][y + 2], tiles[x][y + 1],p));
                         }
                     }
                 }
-            }
-            case Left -> {
+                break;
+            case Left :
                 if(x-1>=0){
                     Piece p = tiles[x-1][y].getPiece();
                     if(p==null){
                         result.add(new SingleMove(tiles[x][y],tiles[x-1][y],null));
                     }
                     else if(piece.getColor()!=p.getColor()&&x-2>=0){
-                        if(tiles[x-2][y].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x-2][y],tiles[x-1][y]));
+                        if(tiles[x-2][y].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x-2][y],tiles[x-1][y],p));
                     }
                 }
-            }
-            case Right -> {
+                break;
+            case Right :
                 if(x+1<=7){
                     Piece p = tiles[x+1][y].getPiece();
                     if(p==null){
                         result.add(new SingleMove(tiles[x][y],tiles[x+1][y],null));
                     }
                     else if(piece.getColor()!=p.getColor()&&x+2<=7){
-                        if(tiles[x+2][y].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x+2][y],tiles[x+1][y]));
+                        if(tiles[x+2][y].getPiece()==null)result.add(new SingleMove(tiles[x][y],tiles[x+2][y],tiles[x+1][y],p));
                     }
                 }
-            }
+                break;
+            default:
+                break;
         }
         return result;
     }

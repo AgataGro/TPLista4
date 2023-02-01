@@ -1,16 +1,17 @@
 package warcaby;
 
 import javafx.application.Application;
-import javafx.scene.Group;
+import javafx.event.EventHandler;
+import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import javafx.scene.control.Button;
 import javafx.scene.text.Font;
+import javafx.scene.Group;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class PolishCheckers extends Application {
@@ -19,18 +20,20 @@ public class PolishCheckers extends Application {
     private Group piecesGroup = new Group();
     private Square[][] tiles = new Square[10][10];
     Mediator mediator;
+    boolean bot;
     List<Square> killed=new ArrayList<>();
-    
-    // to pole jest wykorzystywane przy uruchamianiu aplikacji z poziomu klasy LaunchingCheckers
+
     static Stage classStage = new Stage();
+    PolishCheckers(boolean bot){
+        this.bot=bot;
+    }
 
     /*
      * tutaj tworzy się plansza do gry
      */
     @Override
-    public void start(Stage stage){
+    public void start(Stage stage) {
         classStage = stage;
-
         AnchorPane pane = new AnchorPane();
         Button button = new Button("Opponent's turn");
         button.setFont(Font.font("Times New Roman", 20));
@@ -74,7 +77,8 @@ public class PolishCheckers extends Application {
             x = 0;
             y += 70;
         }
-        mediator=new Mediator(true);
+
+        mediator=new Mediator(true,true);
         List<Piece> pieceList = getPieces(true);
         for (Piece piece : pieceList) {
             mediator.addWhite(piece);
@@ -83,6 +87,7 @@ public class PolishCheckers extends Application {
         for (Piece piece : pieceList) {
             mediator.addBlack(piece);
         }
+        mediator.calculateMoves(tiles);
 
         Scene scene = new Scene(pane,700,736);
         stage.setTitle("Polish checkers");
@@ -91,9 +96,10 @@ public class PolishCheckers extends Application {
         stage.show();
     }
 
-    private int getScenePlace(double x) {
-        return (int)x/70;
-    }
+    /**
+     * @param isWhite true if requested pieces are white, false otherwise
+     * @return list of white or black pieces
+     */
     private List<Piece> getPieces(boolean isWhite){
         List<Piece> temp=new ArrayList<>();
         for(int i=0;i<10;i++)
@@ -107,6 +113,11 @@ public class PolishCheckers extends Application {
         }
         return temp;
     }
+
+    private int getScenePlace(double x) {
+        return (int)x/70;
+    }
+
     /**
      * @param piece a piece whose move legality we want to check
      * @param x a coordinate of the left top corner of a square where we want to place the piece
@@ -117,6 +128,7 @@ public class PolishCheckers extends Application {
         List<Square> availableMoves = mediator.getAvailibleTiles(piece,tiles);
         return availableMoves.contains(tiles[x][y]);
     }
+
     /**
      * in this method a new piece is created with requested features
      * and some actions are set to this piece
@@ -130,14 +142,16 @@ public class PolishCheckers extends Application {
     private Piece createPiece(int x, int y, int r, Color color, State state) {
         Piece piece = new PolishPiece(x,y,r,color,state);
 
-        piece.setOnMouseReleased(e -> {
-            int newX = getScenePlace(e.getSceneX());
-            int newY = getScenePlace(e.getSceneY());
+        piece.setOnMouseReleased(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                int newX = getScenePlace(e.getSceneX());
+                int newY = getScenePlace(e.getSceneY());
 
-            if(newX<0 || newY<0 || newX>9 || newY>9 || !checkMove(piece,newX,newY))
-                piece.notMove();
-            else {
-                int startX = getScenePlace(piece.getOldX());
+                if(newX<0 || newY<0 || newX>9 || newY>9 || !checkMove(piece,newX,newY))
+                    piece.notMove();
+                else {
+                    int startX = getScenePlace(piece.getOldX());
                     int startY = getScenePlace(piece.getOldY());
                     if(checkMove(piece,newX,newY)){
                         if(mediator.getMovedPiece()==null) {
@@ -151,6 +165,13 @@ public class PolishCheckers extends Application {
                             tiles[newX][newY].setPiece(piece);
                             if(!mediator.hasKilled()){
                                 mediator.changeTurn(tiles);
+                                if(bot){
+                                    List<Piece> toKill = mediator.pickRandomMove();
+                                    for (Piece value : toKill) {
+                                        piecesGroup.getChildren().remove(value);
+                                    }
+                                    mediator.changeTurn(tiles);
+                                }
                                 System.out.println("endTurn, not killed");
                             }
                             else {
@@ -167,6 +188,13 @@ public class PolishCheckers extends Application {
                                     }
                                     mediator.changeTurn(tiles);
                                     killed.clear();
+                                    if(bot){
+                                        List<Piece> toKill = mediator.pickRandomMove();
+                                        for (Piece value : toKill) {
+                                            piecesGroup.getChildren().remove(value);
+                                        }
+                                        mediator.changeTurn(tiles);
+                                    }
                                 }
                             }
                         }
@@ -176,11 +204,17 @@ public class PolishCheckers extends Application {
                                 mediator.addKilled(mediator.getKilled(tiles[startX][startY], tiles[newX][newY], tiles));
                             }
                             piece.move(newX,newY);
-
                             tiles[startX][startY].setPiece(null);
                             tiles[newX][newY].setPiece(piece);
                             if(!mediator.hasKilled()){
                                 mediator.changeTurn(tiles);
+                                if(bot){
+                                    List<Piece> toKill = mediator.pickRandomMove();
+                                    for (Piece value : toKill) {
+                                        piecesGroup.getChildren().remove(value);
+                                    }
+                                    mediator.changeTurn(tiles);
+                                }
                                 System.out.println("endTurn, not killed");
                             }
                             else {
@@ -197,10 +231,18 @@ public class PolishCheckers extends Application {
                                     }
                                     mediator.changeTurn(tiles);
                                     killed.clear();
+                                    if(bot){
+                                        List<Piece> toKill = mediator.pickRandomMove();
+                                        for (Piece value : toKill) {
+                                            piecesGroup.getChildren().remove(value);
+                                        }
+                                        mediator.changeTurn(tiles);
+                                    }
                                 }
                             }
                         }
                     }
+                }
                 if(mediator.getWhiteNum()==0) {
                     System.out.println("Black wins!");
                     BlackWin win = new BlackWin();
@@ -216,7 +258,6 @@ public class PolishCheckers extends Application {
                     return;
                 }
             }
-
         });
 
         piece.setOnMouseClicked(e -> {
@@ -239,7 +280,7 @@ public class PolishCheckers extends Application {
                 temp.setStroke(null);
             }
         });
-        
+
         piece.setOnMouseDragged(e -> {
             piece.toFront();
         });
@@ -247,9 +288,6 @@ public class PolishCheckers extends Application {
         return piece;
     }
 
-    /**
-    *@param args array with given arguments
-    */
     public static void main(String[] args) {
         launch(args);
     }
